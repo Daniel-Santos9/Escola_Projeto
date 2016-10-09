@@ -1,14 +1,24 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Model.bean;
 
-/**
- *
- * @author Ditto66
- */
 public class Autor {
     
+  protected int autor_id;
+  protected String nome;
+
+    public int getAutor_id() {
+        return autor_id;
+    }
+
+    public void setAutor_id(int autor_id) {
+        this.autor_id = autor_id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+  
 }

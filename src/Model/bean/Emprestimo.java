@@ -1,14 +1,31 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Model.bean;
 
-/**
- *
- * @author Ditto66
- */
 public class Emprestimo {
+    
+    protected int empres_id,matri_alu,id_exemp;
+
+    public int getEmpres_id() {
+        return empres_id;
+    }
+
+    public void setEmpres_id(int empres_id) {
+        this.empres_id = empres_id;
+    }
+
+    public int getMatri_alu() {
+        return matri_alu;
+    }
+
+    public void setMatri_alu(int matri_alu) {
+        this.matri_alu = matri_alu;
+    }
+
+    public int getId_exemp() {
+        return id_exemp;
+    }
+
+    public void setId_exemp(int id_exemp) {
+        this.id_exemp = id_exemp;
+    }
     
 }
