@@ -54,7 +54,6 @@ public class UsuarioDAO {
              else{
                  throw new UsuarioInvalidoException();
              }
-
         } 
         catch (SQLException ex) {
             Logger.getLogger(ProfessorDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -63,6 +62,26 @@ public class UsuarioDAO {
             ConnectionFactory.closeConnection(con, stmt, rs);
         }
         return -1;
+    }
+    
+    public boolean update_user(int id_prof, int id_user){
+
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        
+        try {
+            String sql = "UPDATE Usuario SET ID_Prof = "+id_prof+" WHERE User_ID = "+id_user+" ;";
+            stmt = con.prepareStatement(sql);       
+            stmt.executeQuery(sql);
+            return true;
+        } 
+        catch (SQLException ex) {
+            Logger.getLogger(ProfessorDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally{
+            ConnectionFactory.closeConnection(con, stmt);
+        }
+        return false;
     }
 
 }

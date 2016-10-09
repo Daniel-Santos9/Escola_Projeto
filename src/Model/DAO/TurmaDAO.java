@@ -68,6 +68,5 @@ public class TurmaDAO {
             ConnectionFactory.closeConnection(con, stmt,rs);
         }
         return -1;       
-
     }    
 }
