@@ -4,11 +4,13 @@ import Connection.ConnectionFactory;
 import Model.bean.Aluno;
 import Model.bean.Pais;
 import Model.bean.Turma;
+import Tratamento_Exception.AlunoInvalidoException;
 import Tratamento_Exception.PaisInvalidoException;
 import Tratamento_Exception.TurmaInvalidaException;
 import Tratamento_Exception.UsuarioInvalidoException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -32,7 +34,9 @@ public class AlunoDAO {
             int pais_id = pdao.procura_pais(p);
             
             sql = "INSERT INTO ALUNO (Alu_Nome,Alu_RG,Alu_CPF,Alu_Email,ID_Turma,ID_Pais,DT_Inser,HR_Inser,User_Inser,Status)"
-                    + " VALUES('"+a.getNome()+"','"+a.getRG()+"','"+a.getCPF()+"','"+a.getEmail()+"','"+turma_id+"','"+pais_id+"',CURDATE(),CURTIME(),"+user_inser+","+1+");";
+                    + " VALUES('"+a.getNome()+"','"+a.getRG()+"','"+a.getCPF()+"','"+a.getEmail()+"','"
+                    +turma_id+"','"+pais_id+"',CURDATE(),CURTIME(),"+user_inser+","+1+");";
+            
             stmt = con.prepareStatement(sql);   
             stmt.executeQuery(sql);
             return true;
@@ -53,5 +57,39 @@ public class AlunoDAO {
             ConnectionFactory.closeConnection(con, stmt);
         }
         return false;
-    }  
+    }
+    
+    public int procura_aluno(Aluno a) throws AlunoInvalidoException{
+        
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        String sql;
+        
+        try {
+            sql = "SELECT Alu_Matricu FROM Aluno WHERE Alu_Nome = '"+a.getNome()+
+                  "' AND Alu_RG = '"+a.getRG()+
+                  "' AND Alu_CPF = '"+a.getCPF()+
+                  "' AND Alu_Email = '"+a.getEmail()+
+                  ";";
+            stmt = con.prepareStatement(sql);          
+            stmt.executeQuery(sql);
+            rs = stmt.executeQuery(sql);
+            
+            if(rs.first()){
+                return rs.getInt(1);
+            }
+            else{
+                throw new AlunoInvalidoException();
+            }
+        } 
+        catch (SQLException ex) {
+            Logger.getLogger(ProfessorDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally{
+            ConnectionFactory.closeConnection(con, stmt,rs);
+        }
+        return -1;       
+    }    
+  
 }

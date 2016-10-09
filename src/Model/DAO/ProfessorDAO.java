@@ -2,7 +2,7 @@ package Model.DAO;
 
 import Connection.ConnectionFactory;
 import Model.bean.Professor;
-import Model.bean.Usuario;
+import Tratamento_Exception.ProfessorInvalidoException;
 import Tratamento_Exception.UsuarioInvalidoException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,43 +14,61 @@ import javax.swing.JOptionPane;
 
 public class ProfessorDAO {
     
-    public int procura_professor(Professor p) throws{
-        
-
-             sql = "SELECT Prof_ID from PROFESSOR WHERE Prof_CPF ='"+p.getCPF()+"' ;";
-             stmt = con.prepareStatement(sql);
-             rs = stmt.executeQuery(sql);
-             rs.first();
-             int prof_id = rs.getInt(1);
-    }
-   
-    public boolean create( Professor p, String login){
-        
-        boolean cadas;
-        String sql;
-        UsuarioDAO udao = new UsuarioDAO();
+    public int procura_professor(int id_user) throws ProfessorInvalidoException{
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         ResultSet rs = null;
+        String sql;
         
         try {
-           cadas = udao.create(p);
+            sql = "SELECT p.Prof_ID FROM Professor p"
+                    + "INNER JOIN Usuario u ON p.Prof_ID = u.ID_Prof"
+                    + " WHERE u.ID_Prof ="+id_user+";";
+            stmt = con.prepareStatement(sql);          
+            stmt.executeQuery(sql);
+            rs = stmt.executeQuery(sql);
+   
+            if(rs.first()){
+                return rs.getInt(1);
+            }
+            else{
+                throw new ProfessorInvalidoException();
+            }
+        } 
+        catch (SQLException ex) {
+            Logger.getLogger(ProfessorDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally{
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+        return -1;       
+    }            
+   
+    public boolean create( Professor p, String login){
+        
+        String sql;
 
-            if(cadas == true){
+        UsuarioDAO udao = new UsuarioDAO();
+        ProfessorDAO pdao = new ProfessorDAO();
+        
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        
+        try {
+
+            if(udao.create(p)){
                
-             int user_id = udao.procura_usuario(p.getLogin());
-             int user_inser = udao.procura_usuario(login);           
+                int user_id = udao.procura_usuario(p.getLogin());
+                int user_inser = udao.procura_usuario(login);
+                
+                sql = "INSERT INTO PROFESSOR (Prof_CPF,Prof_RG,Prof_Email,Prof_Graduacao,ID_User,DT_Inser,HR_Inser,User_Inser,Status)"
+                       + " VALUES('"+p.getCPF()+"','"+p.getRG()+"','"+p.getEmail()+"','"+p.getGraduacao()+"','"+user_id+"',CURDATE(),CURTIME(),"+user_inser+","+1+");";
+                stmt = con.prepareStatement(sql);
+                stmt.execute(sql);
 
-             sql = "INSERT INTO PROFESSOR (Prof_CPF,Prof_RG,Prof_Email,Prof_Graduacao,ID_User,DT_Inser,HR_Inser,User_Inser,Status)"
-                     + " VALUES('"+p.getCPF()+"','"+p.getRG()+"','"+p.getEmail()+"','"+p.getGraduacao()+"','"+user_id+"',CURDATE(),CURTIME(),"+user_inser+","+1+");";
-             stmt = con.prepareStatement(sql);
-             stmt.execute(sql);
-
-             // 5ª ATUALIZA O ÚLTIMO USUÁRIO PARA QUE ELE RECEBA O ID DO ULTIMO PROFESSOR CRIADO
-             sql = "UPDATE USUARIO SET ID_Prof = "+prof_id+" WHERE User_ID = "+user_id+" ;";
-             stmt = con.prepareStatement(sql);
-
-             return true;
+               int prof_id = pdao.procura_professor(user_id);
+               
+               return udao.update_user(prof_id, user_id);
             }
         } 
         catch (SQLException ex) {
@@ -58,9 +76,12 @@ public class ProfessorDAO {
         } 
         catch (UsuarioInvalidoException ex) {
             JOptionPane.showMessageDialog(null,ex.getMessage());
+        } 
+        catch (ProfessorInvalidoException ex) {
+            JOptionPane.showMessageDialog(null,ex.getMessage());
         }
         finally{
-            ConnectionFactory.closeConnection(con, stmt, rs);
+            ConnectionFactory.closeConnection(con, stmt);
         }
     return false;
     }
