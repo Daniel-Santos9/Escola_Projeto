@@ -63,9 +63,9 @@ public class Cadastro_Alunos extends javax.swing.JFrame {
         jLRGMsg.setFont(new java.awt.Font("Open Sans", 1, 12)); // NOI18N
         jLRGMsg.setForeground(new java.awt.Color(255, 255, 255));
         jLRGMsg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLRGMsg.setText("Somente números!");
+        jLRGMsg.setText("Formato: 00.000.000-0");
         jLRGMsg.setOpaque(true);
-        getContentPane().add(jLRGMsg, new org.netbeans.lib.awtextra.AbsoluteConstraints(127, 185, 120, -1));
+        getContentPane().add(jLRGMsg, new org.netbeans.lib.awtextra.AbsoluteConstraints(97, 185, 150, -1));
 
         jLEmailMsg.setBackground(new java.awt.Color(231, 76, 60));
         jLEmailMsg.setFont(new java.awt.Font("Open Sans", 1, 12)); // NOI18N
@@ -189,9 +189,9 @@ public class Cadastro_Alunos extends javax.swing.JFrame {
         jLCPFMsg.setFont(new java.awt.Font("Open Sans", 1, 12)); // NOI18N
         jLCPFMsg.setForeground(new java.awt.Color(255, 255, 255));
         jLCPFMsg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLCPFMsg.setText("Somente números!");
+        jLCPFMsg.setText("Formato: 000.000.000-00");
         jLCPFMsg.setOpaque(true);
-        getContentPane().add(jLCPFMsg, new org.netbeans.lib.awtextra.AbsoluteConstraints(451, 123, 120, -1));
+        getContentPane().add(jLCPFMsg, new org.netbeans.lib.awtextra.AbsoluteConstraints(411, 123, 160, -1));
 
         jPanel1.setMaximumSize(new java.awt.Dimension(596, 60));
         jPanel1.setMinimumSize(new java.awt.Dimension(596, 60));
@@ -324,29 +324,27 @@ public class Cadastro_Alunos extends javax.swing.JFrame {
     }//GEN-LAST:event_RGFocusGained
 
     private void CPFKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CPFKeyTyped
-        validator.numericValidate(evt);
-        validator.maxLengthLimit(CPF, 11);
+        validator.maxLengthLimit(CPF, 14);
     }//GEN-LAST:event_CPFKeyTyped
 
     private void RGKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RGKeyTyped
-        validator.numericValidate(evt);
-        validator.maxLengthLimit(RG, 13);
+        validator.maxLengthLimit(RG, 12);
     }//GEN-LAST:event_RGKeyTyped
 
     private void NomeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NomeKeyTyped
-        validator.maxLengthLimit(Nome, 40);
+        validator.maxLengthLimit(Nome, 50);
     }//GEN-LAST:event_NomeKeyTyped
 
     private void EmailKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EmailKeyTyped
-        validator.maxLengthLimit(Email, 30);
+        validator.maxLengthLimit(Email, 50);
     }//GEN-LAST:event_EmailKeyTyped
 
     private void PaiKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PaiKeyTyped
-        validator.maxLengthLimit(Pai, 40);
+        validator.maxLengthLimit(Pai, 50);
     }//GEN-LAST:event_PaiKeyTyped
 
     private void MaeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MaeKeyTyped
-        validator.maxLengthLimit(Mae, 40);
+        validator.maxLengthLimit(Mae, 50);
     }//GEN-LAST:event_MaeKeyTyped
 
     private void RuaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RuaKeyTyped
@@ -354,7 +352,6 @@ public class Cadastro_Alunos extends javax.swing.JFrame {
     }//GEN-LAST:event_RuaKeyTyped
 
     private void NumKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NumKeyTyped
-        validator.numericValidate(evt);
         validator.maxLengthLimit(Num, 4);
     }//GEN-LAST:event_NumKeyTyped
 

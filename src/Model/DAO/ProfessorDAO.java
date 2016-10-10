@@ -21,7 +21,7 @@ public class ProfessorDAO {
         String sql;
         
         try {
-            sql = "SELECT p.Prof_ID FROM Professor p"
+            sql = "SELECT p.Prof_ID FROM Professor p "
                     + "INNER JOIN Usuario u ON p.Prof_ID = u.ID_Prof"
                     + " WHERE u.ID_Prof ="+id_user+";";
             stmt = con.prepareStatement(sql);          

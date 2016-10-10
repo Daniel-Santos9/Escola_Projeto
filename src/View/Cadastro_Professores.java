@@ -63,17 +63,17 @@ public class Cadastro_Professores extends javax.swing.JFrame {
         jLRGMsg.setFont(new java.awt.Font("Open Sans", 1, 12)); // NOI18N
         jLRGMsg.setForeground(new java.awt.Color(255, 255, 255));
         jLRGMsg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLRGMsg.setText("Somente números!");
+        jLRGMsg.setText("Formato: 00.000.000-0");
         jLRGMsg.setOpaque(true);
-        getContentPane().add(jLRGMsg, new org.netbeans.lib.awtextra.AbsoluteConstraints(128, 185, 120, -1));
+        getContentPane().add(jLRGMsg, new org.netbeans.lib.awtextra.AbsoluteConstraints(98, 185, 150, -1));
 
         jLCPFMsg.setBackground(new java.awt.Color(241, 196, 15));
         jLCPFMsg.setFont(new java.awt.Font("Open Sans", 1, 12)); // NOI18N
         jLCPFMsg.setForeground(new java.awt.Color(255, 255, 255));
         jLCPFMsg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLCPFMsg.setText("Somente números!");
+        jLCPFMsg.setText("Formato: 000.000.000-00");
         jLCPFMsg.setOpaque(true);
-        getContentPane().add(jLCPFMsg, new org.netbeans.lib.awtextra.AbsoluteConstraints(455, 124, 120, -1));
+        getContentPane().add(jLCPFMsg, new org.netbeans.lib.awtextra.AbsoluteConstraints(415, 124, 160, -1));
 
         jLEmailMsg.setBackground(new java.awt.Color(231, 76, 60));
         jLEmailMsg.setFont(new java.awt.Font("Open Sans", 1, 12)); // NOI18N
@@ -268,12 +268,11 @@ public class Cadastro_Professores extends javax.swing.JFrame {
     }//GEN-LAST:event_jNomeTextFieldKeyTyped
 
     private void jNomeTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jNomeTextFieldKeyPressed
-        validator.maxLengthLimit(jNomeTextField, 40);
+        validator.maxLengthLimit(jNomeTextField, 50);
     }//GEN-LAST:event_jNomeTextFieldKeyPressed
 
     private void jCPFTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jCPFTextFieldKeyTyped
-        validator.numericValidate(evt);
-        validator.maxLengthLimit(jCPFTextField, 11);        
+        validator.maxLengthLimit(jCPFTextField, 14);        
     }//GEN-LAST:event_jCPFTextFieldKeyTyped
 
     private void jCPFTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jCPFTextFieldFocusGained
@@ -293,16 +292,15 @@ public class Cadastro_Professores extends javax.swing.JFrame {
     }//GEN-LAST:event_jRGTextFieldFocusLost
 
     private void jRGTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jRGTextFieldKeyTyped
-        validator.numericValidate(evt);
-        validator.maxLengthLimit(jRGTextField, 13);
+        validator.maxLengthLimit(jRGTextField, 12);
     }//GEN-LAST:event_jRGTextFieldKeyTyped
 
     private void jemailTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jemailTextFieldKeyTyped
-        validator.maxLengthLimit(jemailTextField, 30);
+        validator.maxLengthLimit(jemailTextField, 50);
     }//GEN-LAST:event_jemailTextFieldKeyTyped
 
     private void jGraduacaoTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jGraduacaoTextFieldKeyTyped
-        validator.maxLengthLimit(jGraduacaoTextField, 40);
+        validator.maxLengthLimit(jGraduacaoTextField, 25);
     }//GEN-LAST:event_jGraduacaoTextFieldKeyTyped
 
     private void jSenhaTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jSenhaTextFieldKeyTyped
@@ -314,7 +312,7 @@ public class Cadastro_Professores extends javax.swing.JFrame {
     }//GEN-LAST:event_jLoginTextFieldKeyTyped
 
     private void jCPFTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jCPFTextFieldKeyPressed
-        
+        validator.maxLengthLimit(jCPFTextField, 14);
     }//GEN-LAST:event_jCPFTextFieldKeyPressed
             
     

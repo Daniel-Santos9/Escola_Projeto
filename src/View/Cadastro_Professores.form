@@ -65,12 +65,12 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Somente n&#xfa;meros!"/>
+        <Property name="text" type="java.lang.String" value="Formato: 00.000.000-0"/>
         <Property name="opaque" type="boolean" value="true"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="128" y="185" width="120" height="-1"/>
+          <AbsoluteConstraints x="98" y="185" width="150" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -86,12 +86,12 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Somente n&#xfa;meros!"/>
+        <Property name="text" type="java.lang.String" value="Formato: 000.000.000-00"/>
         <Property name="opaque" type="boolean" value="true"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="455" y="124" width="120" height="-1"/>
+          <AbsoluteConstraints x="415" y="124" width="160" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>

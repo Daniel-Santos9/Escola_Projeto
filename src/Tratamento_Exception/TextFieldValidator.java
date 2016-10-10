@@ -4,10 +4,6 @@ package Tratamento_Exception;
 import java.awt.event.KeyEvent;
 import javax.swing.JTextField;
 
-/**
- *
- * @author Bruno
- */
 public class TextFieldValidator {
     
     private final String emailregex = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$";

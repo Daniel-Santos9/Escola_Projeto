@@ -19,12 +19,9 @@ public class UsuarioDAO {
         PreparedStatement stmt = null;
         
         try {
-            String sql = "INSERT INTO usuario (User_Nome,User_Login,User_Senha,User_Tipo) VALUES(?,?,?,?)";
-            stmt = con.prepareStatement(sql);
-            stmt.setString(1, u.getNome());
-            stmt.setString(2, u.getLogin());
-            stmt.setString(3, u.getSenha());
-            stmt.setString(4, u.getTipo_user());            
+            String sql = "INSERT INTO usuario (User_Nome,User_Login,User_Senha,User_Tipo)"
+                        + " VALUES('"+u.getNome()+"','"+u.getLogin()+"','"+u.getSenha()+"','"+u.getTipo_user()+"');";
+            stmt = con.prepareStatement(sql);         
             stmt.executeQuery(sql);
             return true;
         } 
@@ -45,7 +42,7 @@ public class UsuarioDAO {
         String sql;
         
         try {
-             sql = "SELECT User_ID FROM usuario WHERE User_Login ='"+login+"'";
+             sql = "SELECT User_ID FROM usuario WHERE User_Login ='"+login+"';";
              stmt = con.prepareStatement(sql);
              rs = stmt.executeQuery(sql);
              
@@ -91,10 +88,9 @@ public class UsuarioDAO {
         PreparedStatement stmt = null;
         ResultSet rs = null;
         try {
-            String sql = "select User_Tipo, User_Nome from usuario WHERE User_Login = ? and User_Senha = ?";
+            String sql = "SELECT User_Tipo, User_Nome FROM usuario "
+                         + "WHERE User_Login = '"+u.getLogin()+"' AND User_Senha = '"+u.getSenha()+"';";
             stmt = con.prepareStatement(sql);
-            stmt.setString(1, u.getLogin());
-            stmt.setString(2, u.getSenha());
             
             rs = stmt.executeQuery();
             
