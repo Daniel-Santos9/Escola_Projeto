@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 public class UsuarioDAO {
 
@@ -84,4 +85,32 @@ public class UsuarioDAO {
         return false;
     }
 
+    public boolean efetuarLogin(Usuario u){
+        
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            String sql = "select User_Tipo, User_Nome from usuario WHERE User_Login = ? and User_Senha = ?";
+            stmt = con.prepareStatement(sql);
+            stmt.setString(1, u.getLogin());
+            stmt.setString(2, u.getSenha());
+            
+            rs = stmt.executeQuery();
+            
+            if(rs.first()){
+                u.setTipo_user(rs.getString(1));
+                u.setNome(rs.getString(2));
+                return true;
+            }
+ 
+        }
+        catch(SQLException ex){
+            JOptionPane.showMessageDialog(null,ex.getMessage());
+        }
+        finally{
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+        return false;
+    }
 }
