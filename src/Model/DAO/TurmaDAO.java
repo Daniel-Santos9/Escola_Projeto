@@ -8,6 +8,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -68,5 +70,50 @@ public class TurmaDAO {
             ConnectionFactory.closeConnection(con, stmt,rs);
         }
         return -1;       
-    }    
+    }
+
+    public List<Turma> read(String login){
+        
+        String sql;
+        UsuarioDAO udao = new UsuarioDAO();
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        List<Turma> turm = new ArrayList<>();
+        
+        try {
+           
+            int id_user = udao.procura_usuario(login);
+            sql = "SELECT t.Turma_Id,t.Turma_Turno,t.Turma_Serie, t.Turma_Sala, t.Turma_Ano FROM TURMA t " +
+                    "INNER JOIN RTDP r ON t.turma_id=r.id_turma " +
+                    "INNER JOIN PROFESSOR p ON p.prof_id=r.id_prof " +
+                    "INNER JOIN DISCIPLINA d ON d.disc_id = r.id_disc " +
+                    "WHERE p.id_user = "+id_user+" "+
+                    "AND t.turma_ano = CURDATE()";
+            stmt = con.prepareStatement(sql);          
+            stmt.executeQuery(sql);
+            rs = stmt.executeQuery(sql);
+             
+            while(rs.next()){
+                Turma t = new Turma();
+                t.setTurma_id(rs.getInt(1));
+                t.setTurno(rs.getString(2));
+                t.setSerie(rs.getString(3));
+                t.setSala(rs.getString(4));
+                
+                turm.add(t);
+            }
+        } 
+        catch (SQLException ex) {
+            Logger.getLogger(ProfessorDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        catch (UsuarioInvalidoException ex) {
+            Logger.getLogger(TurmaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally{
+            ConnectionFactory.closeConnection(con, stmt,rs);
+        }
+        
+        return turm;
+    }
 }

@@ -70,6 +70,7 @@ public class ProfessorDAO {
                
                return udao.update_user(prof_id, user_id);
             }
+            return false;
         } 
         catch (SQLException ex) {
             Logger.getLogger(ProfessorDAO.class.getName()).log(Level.SEVERE, null, ex);

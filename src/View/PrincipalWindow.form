@@ -299,9 +299,10 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jCadastrarBtn" alignment="0" pref="155" max="32767" attributes="0"/>
-                              <Component id="jEditarBtn" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jVisualizarBtn" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jCadastrarProfessorBtn" alignment="0" pref="155" max="32767" attributes="0"/>
+                              <Component id="jCadastrarFuncionarioBtn" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jCadastrarNotasBtn" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jCadastrarAlunoBtn" alignment="1" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="0" pref="138" max="32767" attributes="0"/>
                       </Group>
@@ -311,39 +312,49 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                          <Component id="jCadastrarBtn" min="-2" pref="39" max="-2" attributes="0"/>
+                          <Component id="jCadastrarProfessorBtn" min="-2" pref="39" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                          <Component id="jEditarBtn" min="-2" pref="39" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                          <Component id="jVisualizarBtn" min="-2" pref="39" max="-2" attributes="0"/>
-                          <EmptySpace pref="126" max="32767" attributes="0"/>
+                          <Component id="jCadastrarFuncionarioBtn" min="-2" pref="39" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="jCadastrarAlunoBtn" min="-2" pref="39" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="jCadastrarNotasBtn" min="-2" pref="39" max="-2" attributes="0"/>
+                          <EmptySpace pref="70" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JButton" name="jCadastrarBtn">
+                <Component class="javax.swing.JButton" name="jCadastrarProfessorBtn">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Cadastrar Professores"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCadastrarBtnActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCadastrarProfessorBtnActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="jEditarBtn">
+                <Component class="javax.swing.JButton" name="jCadastrarFuncionarioBtn">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Cadastrar Funcion&#xe1;rios"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jEditarBtnActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCadastrarFuncionarioBtnActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="jVisualizarBtn">
+                <Component class="javax.swing.JButton" name="jCadastrarNotasBtn">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Cadastrar Notas"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCadastrarNotasBtnActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="jCadastrarAlunoBtn">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Cadastrar Alunos"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jVisualizarBtnActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCadastrarAlunoBtnActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>

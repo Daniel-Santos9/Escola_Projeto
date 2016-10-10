@@ -33,9 +33,10 @@ public class PrincipalWindow extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
-        jCadastrarBtn = new javax.swing.JButton();
-        jEditarBtn = new javax.swing.JButton();
-        jVisualizarBtn = new javax.swing.JButton();
+        jCadastrarProfessorBtn = new javax.swing.JButton();
+        jCadastrarFuncionarioBtn = new javax.swing.JButton();
+        jCadastrarNotasBtn = new javax.swing.JButton();
+        jCadastrarAlunoBtn = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
 
@@ -137,24 +138,31 @@ public class PrincipalWindow extends javax.swing.JFrame {
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
         jPanel6.setMaximumSize(new java.awt.Dimension(400, 32767));
 
-        jCadastrarBtn.setText("Cadastrar Professores");
-        jCadastrarBtn.addActionListener(new java.awt.event.ActionListener() {
+        jCadastrarProfessorBtn.setText("Cadastrar Professores");
+        jCadastrarProfessorBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCadastrarBtnActionPerformed(evt);
+                jCadastrarProfessorBtnActionPerformed(evt);
             }
         });
 
-        jEditarBtn.setText("Cadastrar Funcionários");
-        jEditarBtn.addActionListener(new java.awt.event.ActionListener() {
+        jCadastrarFuncionarioBtn.setText("Cadastrar Funcionários");
+        jCadastrarFuncionarioBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jEditarBtnActionPerformed(evt);
+                jCadastrarFuncionarioBtnActionPerformed(evt);
             }
         });
 
-        jVisualizarBtn.setText("Cadastrar Alunos");
-        jVisualizarBtn.addActionListener(new java.awt.event.ActionListener() {
+        jCadastrarNotasBtn.setText("Cadastrar Notas");
+        jCadastrarNotasBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jVisualizarBtnActionPerformed(evt);
+                jCadastrarNotasBtnActionPerformed(evt);
+            }
+        });
+
+        jCadastrarAlunoBtn.setText("Cadastrar Alunos");
+        jCadastrarAlunoBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCadastrarAlunoBtnActionPerformed(evt);
             }
         });
 
@@ -164,21 +172,24 @@ public class PrincipalWindow extends javax.swing.JFrame {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jCadastrarBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
-                    .addComponent(jEditarBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jVisualizarBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jCadastrarProfessorBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
+                    .addComponent(jCadastrarFuncionarioBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jCadastrarNotasBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jCadastrarAlunoBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 138, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addComponent(jCadastrarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jCadastrarProfessorBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19)
-                .addComponent(jEditarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19)
-                .addComponent(jVisualizarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(126, Short.MAX_VALUE))
+                .addComponent(jCadastrarFuncionarioBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jCadastrarAlunoBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jCadastrarNotasBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(70, Short.MAX_VALUE))
         );
 
         jPanel4.add(jPanel6);
@@ -258,23 +269,27 @@ public class PrincipalWindow extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel4MouseClicked
 
-    private void jCadastrarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCadastrarBtnActionPerformed
+    private void jCadastrarProfessorBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCadastrarProfessorBtnActionPerformed
           Cadastro_Professores cp = new Cadastro_Professores(jLoginLabel.getText());
           cp.setVisible(true);
            //this.dispose();
-    }//GEN-LAST:event_jCadastrarBtnActionPerformed
+    }//GEN-LAST:event_jCadastrarProfessorBtnActionPerformed
 
-    private void jEditarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jEditarBtnActionPerformed
+    private void jCadastrarFuncionarioBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCadastrarFuncionarioBtnActionPerformed
           Cadastro_Funcionario cf = new Cadastro_Funcionario(jLoginLabel.getText());
           cf.setVisible(true);
            //this.dispose();
-    }//GEN-LAST:event_jEditarBtnActionPerformed
+    }//GEN-LAST:event_jCadastrarFuncionarioBtnActionPerformed
 
-    private void jVisualizarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVisualizarBtnActionPerformed
-          Cadastro_Alunos ca = new Cadastro_Alunos(jLoginLabel.getText());
-          ca.setVisible(true);
+    private void jCadastrarNotasBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCadastrarNotasBtnActionPerformed
+          Notas no = new Notas(jLoginLabel.getText());
+          no.setVisible(true);
            //this.dispose();
-    }//GEN-LAST:event_jVisualizarBtnActionPerformed
+    }//GEN-LAST:event_jCadastrarNotasBtnActionPerformed
+
+    private void jCadastrarAlunoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCadastrarAlunoBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCadastrarAlunoBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -314,8 +329,10 @@ public class PrincipalWindow extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jCadastrarBtn;
-    private javax.swing.JButton jEditarBtn;
+    private javax.swing.JButton jCadastrarAlunoBtn;
+    private javax.swing.JButton jCadastrarFuncionarioBtn;
+    private javax.swing.JButton jCadastrarNotasBtn;
+    private javax.swing.JButton jCadastrarProfessorBtn;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -331,6 +348,5 @@ public class PrincipalWindow extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JButton jVisualizarBtn;
     // End of variables declaration//GEN-END:variables
 }
