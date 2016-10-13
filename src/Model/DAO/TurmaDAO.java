@@ -89,7 +89,7 @@ public class TurmaDAO {
                     "INNER JOIN PROFESSOR p ON p.prof_id=r.id_prof " +
                     "INNER JOIN DISCIPLINA d ON d.disc_id = r.id_disc " +
                     "WHERE p.id_user = "+id_user+" "+
-                    "AND t.turma_ano = CURDATE()";
+                    "AND t.turma_ano = YEAR(CURDATE())";
             stmt = con.prepareStatement(sql);          
             stmt.executeQuery(sql);
             rs = stmt.executeQuery(sql);

@@ -1,12 +1,20 @@
 package View;
 
+import Model.DAO.TurmaDAO;
+import Model.bean.Turma;
 import Model.bean.Usuario;
+import javax.swing.table.DefaultTableModel;
 
 public class PrincipalWindow extends javax.swing.JFrame {
 
+    private Usuario userLogged;
+    
     public PrincipalWindow(Usuario u) {
         initComponents();
-        jLoginLabel.setText(u.getLogin());
+        userLogged = u;
+        
+        jLoginLabel.setText(userLogged.getNome());
+        loadTurmasTable();
     }
     public PrincipalWindow() {
         initComponents();
@@ -39,6 +47,9 @@ public class PrincipalWindow extends javax.swing.JFrame {
         jCadastrarAlunoBtn = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTableTurmas = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 102, 255));
@@ -189,7 +200,7 @@ public class PrincipalWindow extends javax.swing.JFrame {
                 .addComponent(jCadastrarAlunoBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jCadastrarNotasBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addContainerGap(222, Short.MAX_VALUE))
         );
 
         jPanel4.add(jPanel6);
@@ -203,15 +214,58 @@ public class PrincipalWindow extends javax.swing.JFrame {
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
+        jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane1.setBorder(null);
+
+        jTableTurmas.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        jTableTurmas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Série", "Turno", "Sala"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTableTurmas.setGridColor(new java.awt.Color(189, 195, 199));
+        jTableTurmas.setRowHeight(20);
+        jTableTurmas.setShowVerticalLines(false);
+        jTableTurmas.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(jTableTurmas);
+
+        jLabel1.setFont(new java.awt.Font("Open Sans Semibold", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(41, 50, 57));
+        jLabel1.setText("Turmas");
+        jLabel1.setMaximumSize(new java.awt.Dimension(65, 26));
+        jLabel1.setMinimumSize(new java.awt.Dimension(65, 26));
+        jLabel1.setPreferredSize(new java.awt.Dimension(65, 26));
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 710, Short.MAX_VALUE)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -226,9 +280,9 @@ public class PrincipalWindow extends javax.swing.JFrame {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -246,7 +300,7 @@ public class PrincipalWindow extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -291,6 +345,20 @@ public class PrincipalWindow extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jCadastrarAlunoBtnActionPerformed
 
+    
+    private void loadTurmasTable(){
+        DefaultTableModel model = (DefaultTableModel) jTableTurmas.getModel();
+        TurmaDAO turmaDAO = new TurmaDAO();
+        
+        for(Turma t: turmaDAO.read(userLogged.getLogin())){
+            model.addRow(new Object[]{
+                t.getSerie(),
+                t.getTurno(),
+                t.getSala()
+            });
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -333,6 +401,7 @@ public class PrincipalWindow extends javax.swing.JFrame {
     private javax.swing.JButton jCadastrarFuncionarioBtn;
     private javax.swing.JButton jCadastrarNotasBtn;
     private javax.swing.JButton jCadastrarProfessorBtn;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -348,5 +417,7 @@ public class PrincipalWindow extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTableTurmas;
     // End of variables declaration//GEN-END:variables
 }
