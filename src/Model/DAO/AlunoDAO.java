@@ -12,6 +12,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -92,4 +94,38 @@ public class AlunoDAO {
         return -1;       
     }    
   
+    public List<Aluno> listAlunos(Turma t){
+        
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        String sql = null;
+        
+        List<Aluno> alunosList = new ArrayList<Aluno>();
+        
+        try {
+            
+            sql = "SELECT Alu_Matricu, Alu_Nome FROM Aluno WHERE ID_Turma = "+t.getTurma_id();
+            stmt = con.prepareStatement(sql);
+            rs = stmt.executeQuery();
+            
+            while(rs.next()){
+                Aluno a = new Aluno();
+                
+                a.setNome(rs.getString("Alu_Nome"));
+                a.setMatricula(rs.getInt("Alu_Matricu"));
+                
+                alunosList.add(a);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(AlunoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+        
+        
+        
+        return alunosList;
+    }
 }
