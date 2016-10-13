@@ -3,11 +3,13 @@ package View;
 import Model.DAO.TurmaDAO;
 import Model.bean.Turma;
 import Model.bean.Usuario;
+import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
 public class PrincipalWindow extends javax.swing.JFrame {
 
     private Usuario userLogged;
+    private List<Turma> listTurma = null;
     
     public PrincipalWindow(Usuario u) {
         initComponents();
@@ -50,6 +52,7 @@ public class PrincipalWindow extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableTurmas = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 102, 255));
@@ -247,6 +250,15 @@ public class PrincipalWindow extends javax.swing.JFrame {
         jLabel1.setMinimumSize(new java.awt.Dimension(65, 26));
         jLabel1.setPreferredSize(new java.awt.Dimension(65, 26));
 
+        jLabel10.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel10.setText("Visualizar Alunos da turma selecionada");
+        jLabel10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel10MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -256,14 +268,17 @@ public class PrincipalWindow extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel10))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE))
         );
@@ -345,12 +360,20 @@ public class PrincipalWindow extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jCadastrarAlunoBtnActionPerformed
 
+    private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
+        int selIndex = jTableTurmas.getSelectedRow();
+                
+        VisualizarTurma vt = new VisualizarTurma(listTurma.get(selIndex));
+        vt.setVisible(true);
+    }//GEN-LAST:event_jLabel10MouseClicked
+
     
     private void loadTurmasTable(){
         DefaultTableModel model = (DefaultTableModel) jTableTurmas.getModel();
         TurmaDAO turmaDAO = new TurmaDAO();
+        listTurma = turmaDAO.read(userLogged.getLogin());
         
-        for(Turma t: turmaDAO.read(userLogged.getLogin())){
+        for(Turma t: listTurma){
             model.addRow(new Object[]{
                 t.getSerie(),
                 t.getTurno(),
@@ -402,6 +425,7 @@ public class PrincipalWindow extends javax.swing.JFrame {
     private javax.swing.JButton jCadastrarNotasBtn;
     private javax.swing.JButton jCadastrarProfessorBtn;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

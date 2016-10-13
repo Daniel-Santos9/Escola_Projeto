@@ -15,14 +15,26 @@ import javax.swing.table.DefaultTableModel;
  * @author bruno
  */
 public class VisualizarTurma extends javax.swing.JFrame {
-
+    
+    private Turma t;
+    
     /**
      * Creates new form VisualizarTurma
+     * @param t
      */
-    public VisualizarTurma() {
-        initComponents();
-        
+    public VisualizarTurma(Turma t) {
+        this.t = t;
+                
+        initComponents();                       
         loadAlunosJTable();
+        
+        jLabelSelTurma.setText("Série: "+this.t.getSerie());
+        jLabelSelTurno.setText("Turno: "+this.t.getTurno());
+        jLabelSelSala.setText("Sala: "+this.t.getSala());
+    }
+    
+    public VisualizarTurma() {        
+        initComponents();                       
     }
 
     /**
@@ -34,16 +46,18 @@ public class VisualizarTurma extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jLabelSelTurma = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableAlunos = new javax.swing.JTable();
         jTextField1 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jLabelSelTurno = new javax.swing.JLabel();
+        jLabelSelSala = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setText("Turma");
+        jLabelSelTurma.setText("Turma");
 
         jTableAlunos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -81,6 +95,10 @@ public class VisualizarTurma extends javax.swing.JFrame {
 
         jLabel3.setText("Clique duas vezes sobre um aluno para visualizar as informações referentes ao mesmo");
 
+        jLabelSelTurno.setText("Turno");
+
+        jLabelSelSala.setText("Sala");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -90,13 +108,21 @@ public class VisualizarTurma extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 580, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel2)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jLabel2))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabelSelTurno)
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabelSelTurma)
+                                .addGap(107, 107, 107)
+                                .addComponent(jLabelSelSala))
                             .addComponent(jLabel3))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -105,13 +131,17 @@ public class VisualizarTurma extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(jLabelSelTurma)
+                    .addComponent(jLabelSelSala))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel2))
+                    .addComponent(jLabelSelTurno))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 258, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3)
                 .addContainerGap())
@@ -128,10 +158,7 @@ public class VisualizarTurma extends javax.swing.JFrame {
     
     private void loadAlunosJTable(){
         DefaultTableModel model = (DefaultTableModel) jTableAlunos.getModel();
-        AlunoDAO alunoDAO = new AlunoDAO();
-        
-        Turma t = new Turma();
-        t.setTurma_id(1);
+        AlunoDAO alunoDAO = new AlunoDAO();                        
         
         alunoDAO.listAlunos(t).stream().forEach((a) -> {
             model.addRow(new Object[]{
@@ -177,9 +204,11 @@ public class VisualizarTurma extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabelSelSala;
+    private javax.swing.JLabel jLabelSelTurma;
+    private javax.swing.JLabel jLabelSelTurno;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableAlunos;
     private javax.swing.JTextField jTextField1;
