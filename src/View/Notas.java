@@ -1,25 +1,44 @@
 package View;
 
-import Model.DAO.TurmaDAO;
+
+import Model.DAO.AlunoDAO;
+import Model.DAO.NotaDAO;
+import Model.bean.Aluno;
+import Model.bean.Disciplina;
+import Model.bean.Nota;
 import Model.bean.Turma;
+import Model.bean.Usuario;
+import Tratamento_Exception.TextFieldValidator;
+import java.awt.event.ActionEvent;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class Notas extends javax.swing.JFrame {
-
+    
+    TextFieldValidator validator = new TextFieldValidator();
+    private Usuario u;
+    private Turma t ;
+    private Aluno a ;
+    private List<Nota> listNota = null;
+    
     public Notas() {
         initComponents();
       
-        
     }
     
-    public Notas(String nome) {
+    public Notas(Aluno a, Usuario u, Turma t) {
         initComponents();
-        TurmaDAO tdao = new TurmaDAO();
+        this.a = a;
+        this.u = u;
+        this.t = t;
+        loadNotasJTable();
         
-        for(Turma p: tdao.read(nome)){
-            jTurnoCb.addItem(p);
-            jTurmaCb.addItem(p);
-        }
-        Login.setText(nome);
+        jAlunoLabel.setText("Aluno: "+this.a.getNome());
+        jProfessorLabel.setText("Professor: "+this.u.getNome());
+        jTurmaLabel.setText("Série: "+this.t.getSerie());
+        jDisciplinaLabel.setText("Disciplina: "+this.t.getDisc_nome());
+        jTunoLabel.setText("Turno: "+this.t.getTurno());
     }
     
 
@@ -34,15 +53,11 @@ public class Notas extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        Login = new javax.swing.JLabel();
-        jAlunoCb = new javax.swing.JComboBox<>();
-        jTurmaCb = new javax.swing.JComboBox<>();
-        jDisciplinaCb = new javax.swing.JComboBox<>();
+        jProfessorLabel = new javax.swing.JLabel();
         jTurmaLabel = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        jDisciplinaLabel = new javax.swing.JLabel();
+        jAlunoLabel = new javax.swing.JLabel();
         jTunoLabel = new javax.swing.JLabel();
-        jTurnoCb = new javax.swing.JComboBox<>();
         jTipoTf = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -50,50 +65,37 @@ public class Notas extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jBimestreTf = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableNotas = new javax.swing.JTable();
         jEditarBtn = new javax.swing.JButton();
         jDeletarBtn = new javax.swing.JButton();
         jCadastrarBtn1 = new javax.swing.JButton();
+        jLabelMsg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        Login.setText("jLabel1");
-
-        jAlunoCb.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jAlunoCbActionPerformed(evt);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
             }
         });
 
-        jTurmaCb.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTurmaCbActionPerformed(evt);
-            }
-        });
-
-        jDisciplinaCb.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jDisciplinaCbActionPerformed(evt);
-            }
-        });
+        jProfessorLabel.setText("PROFESSOR:");
 
         jTurmaLabel.setText("TURMA:");
 
-        jLabel6.setText("DISCIP:");
+        jDisciplinaLabel.setText("DISCIP:");
 
-        jLabel7.setText("ALUNO:");
+        jAlunoLabel.setText("ALUNO:");
 
         jTunoLabel.setText("TURNO:");
-
-        jTurnoCb.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTurnoCbActionPerformed(evt);
-            }
-        });
 
         jTipoTf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTipoTfActionPerformed(evt);
+            }
+        });
+        jTipoTf.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTipoTfKeyPressed(evt);
             }
         });
 
@@ -106,12 +108,22 @@ public class Notas extends javax.swing.JFrame {
                 jValorTfActionPerformed(evt);
             }
         });
+        jValorTf.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jValorTfKeyPressed(evt);
+            }
+        });
 
         jLabel4.setText("BIMESTRE:");
 
         jBimestreTf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBimestreTfActionPerformed(evt);
+            }
+        });
+        jBimestreTf.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jBimestreTfKeyPressed(evt);
             }
         });
 
@@ -122,63 +134,46 @@ public class Notas extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTurnoCb, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTunoLabel))
-                .addGap(47, 47, 47)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTurmaLabel)
-                    .addComponent(jTurmaCb, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(47, 47, 47)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jDisciplinaCb, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTurmaLabel)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jTunoLabel)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jAlunoLabel)
+                            .addComponent(jDisciplinaLabel))
+                        .addGap(125, 125, 125)
+                        .addComponent(jProfessorLabel)
+                        .addGap(122, 122, 122))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(jLabel6)))
-                .addGap(50, 50, 50)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jAlunoCb, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
-                .addComponent(Login)
-                .addGap(43, 43, 43))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTipoTf, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jValorTf, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addGap(40, 40, 40)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(jBimestreTf, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTipoTf, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jValorTf, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3))
+                        .addGap(40, 40, 40)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jBimestreTf, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Login)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jTunoLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTurnoCb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jDisciplinaCb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jTurmaLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTurmaCb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jAlunoCb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTunoLabel)
+                    .addComponent(jDisciplinaLabel))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTurmaLabel)
+                    .addComponent(jAlunoLabel)
+                    .addComponent(jProfessorLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel3)
@@ -191,18 +186,23 @@ public class Notas extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableNotas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Tipo", "Bimestre", "Valor"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTableNotas);
 
         jEditarBtn.setText("EDITAR");
         jEditarBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -231,15 +231,22 @@ public class Notas extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jCadastrarBtn1)
-                        .addGap(41, 41, 41)
-                        .addComponent(jEditarBtn)
-                        .addGap(38, 38, 38)
-                        .addComponent(jDeletarBtn))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(47, 47, 47)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jCadastrarBtn1)
+                                .addGap(60, 60, 60)
+                                .addComponent(jEditarBtn)
+                                .addGap(51, 51, 51)
+                                .addComponent(jDeletarBtn))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(jLabelMsg, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -252,8 +259,10 @@ public class Notas extends javax.swing.JFrame {
                     .addComponent(jDeletarBtn)
                     .addComponent(jCadastrarBtn1))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addComponent(jLabelMsg, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -279,26 +288,68 @@ public class Notas extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jDeletarBtnActionPerformed
 
-    private void jTurnoCbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTurnoCbActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTurnoCbActionPerformed
-
-    private void jDisciplinaCbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDisciplinaCbActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jDisciplinaCbActionPerformed
-
-    private void jTurmaCbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTurmaCbActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTurmaCbActionPerformed
-
-    private void jAlunoCbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAlunoCbActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jAlunoCbActionPerformed
-
     private void jCadastrarBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCadastrarBtn1ActionPerformed
-        // TODO add your handling code here:
+        if(jTipoTf.getText().equals("") || jValorTf.getText().equals("") 
+                || jBimestreTf.getText().equals("")){
+            
+            jLabelMsg.setVisible(true);
+        }
+        else{
+            Nota no = new Nota();
+            NotaDAO ndao = new NotaDAO();
+            
+            no.setBimestre(jBimestreTf.getText());
+            no.setDescricao(jTipoTf.getText());
+            no.setValor(Float.parseFloat(jValorTf.getText()));
+         
+            Disciplina d = new Disciplina();
+            d.setDisc_id(t.getId_disc());
+                
+            if(ndao.create(no, a, d, u.getLogin())){
+                JOptionPane.showMessageDialog(null, "Cadastro Realizado com Sucesso");
+                jLLimparBtnMouseClicked(evt);
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Cadastro Não Realizado");
+            }
+                
+        }
     }//GEN-LAST:event_jCadastrarBtn1ActionPerformed
 
+    private void jLLimparBtnMouseClicked(ActionEvent evt) {
+        jTipoTf.setText("");
+        jValorTf.setText("");
+        jBimestreTf.setText("");
+    }
+    private void jTipoTfKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTipoTfKeyPressed
+        validator.maxLengthLimit(jTipoTf, 25);
+    }//GEN-LAST:event_jTipoTfKeyPressed
+
+    private void jValorTfKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jValorTfKeyPressed
+        validator.maxLengthLimit(jValorTf, 4);
+    }//GEN-LAST:event_jValorTfKeyPressed
+
+    private void jBimestreTfKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jBimestreTfKeyPressed
+        validator.maxLengthLimit(jBimestreTf, 1);
+    }//GEN-LAST:event_jBimestreTfKeyPressed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        loadNotasJTable();
+    }//GEN-LAST:event_formWindowActivated
+    private void loadNotasJTable(){
+        DefaultTableModel model = (DefaultTableModel) jTableNotas.getModel();
+        model.setNumRows(0);
+        NotaDAO notaDAO = new NotaDAO();                                             
+        listNota = notaDAO.ListNotas(a.getMatricula(), t.getId_disc());
+    
+        listNota.stream().forEach((n) -> {
+            model.addRow(new Object[]{
+                n.getDescricao(),
+                n.getBimestre(),
+                n.getValor()
+            });
+        });   
+    }
     /**
      * @param args the command line arguments
      */
@@ -338,26 +389,23 @@ public class Notas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Login;
-    private javax.swing.JComboBox<Object> jAlunoCb;
+    private javax.swing.JLabel jAlunoLabel;
     private javax.swing.JTextField jBimestreTf;
     private javax.swing.JButton jCadastrarBtn1;
     private javax.swing.JButton jDeletarBtn;
-    private javax.swing.JComboBox<Object> jDisciplinaCb;
+    private javax.swing.JLabel jDisciplinaLabel;
     private javax.swing.JButton jEditarBtn;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabelMsg;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jProfessorLabel;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableNotas;
     private javax.swing.JTextField jTipoTf;
     private javax.swing.JLabel jTunoLabel;
-    private javax.swing.JComboBox<Object> jTurmaCb;
     private javax.swing.JLabel jTurmaLabel;
-    private javax.swing.JComboBox<Object> jTurnoCb;
     private javax.swing.JTextField jValorTf;
     // End of variables declaration//GEN-END:variables
 }

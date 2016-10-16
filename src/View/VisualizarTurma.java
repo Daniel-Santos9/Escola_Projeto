@@ -8,6 +8,9 @@ package View;
 import Model.DAO.AlunoDAO;
 import Model.bean.Aluno;
 import Model.bean.Turma;
+import Model.bean.Usuario;
+import java.util.List;
+
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -16,22 +19,25 @@ import javax.swing.table.DefaultTableModel;
  */
 public class VisualizarTurma extends javax.swing.JFrame {
     
-    private Turma t;
-    
+    public Turma t ;
+    public Usuario u ;
+    private List<Aluno> listAluno = null;
     /**
      * Creates new form VisualizarTurma
      * @param t
+     * @param u
      */
-    public VisualizarTurma(Turma t) {
+    public VisualizarTurma(Turma t, Usuario u) {   
+        initComponents();
         this.t = t;
-                
-        initComponents();                       
+        this.u = u;
         loadAlunosJTable();
         jLabelSelAno.setText("Ano: "+this.t.getAno());
         jLabelSelDisciplina.setText("Disciplina: "+this.t.getDisc_nome());
         jLabelSelTurma.setText("Série: "+this.t.getSerie());
         jLabelSelTurno.setText("Turno: "+this.t.getTurno());
         jLabelSelSala.setText("Sala: "+this.t.getSala());
+        jLabelSelProfessor.setText("Professor(a): "+this.u.getNome());
     }
     
     public VisualizarTurma() {        
@@ -50,15 +56,20 @@ public class VisualizarTurma extends javax.swing.JFrame {
         jLabelSelTurma = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableAlunos = new javax.swing.JTable();
-        jTextField1 = new javax.swing.JTextField();
-        jLabelPesquisar = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabelSelTurno = new javax.swing.JLabel();
         jLabelSelSala = new javax.swing.JLabel();
         jLabelSelAno = new javax.swing.JLabel();
         jLabelSelDisciplina = new javax.swing.JLabel();
+        jCadastrarNotaBtn = new javax.swing.JButton();
+        jLabelSelProfessor = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         jLabelSelTurma.setText("Turma");
 
@@ -88,14 +99,6 @@ public class VisualizarTurma extends javax.swing.JFrame {
             jTableAlunos.getColumnModel().getColumn(0).setMaxWidth(100);
         }
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
-
-        jLabelPesquisar.setText("Pesquisar:");
-
         jLabel3.setText("Clique duas vezes sobre um aluno para visualizar as informações referentes ao mesmo");
 
         jLabelSelTurno.setText("Turno");
@@ -106,6 +109,15 @@ public class VisualizarTurma extends javax.swing.JFrame {
 
         jLabelSelDisciplina.setText("Disciplina");
 
+        jCadastrarNotaBtn.setText("Cadastrar Nota");
+        jCadastrarNotaBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCadastrarNotaBtnActionPerformed(evt);
+            }
+        });
+
+        jLabelSelProfessor.setText("Professor(a)");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -113,17 +125,9 @@ public class VisualizarTurma extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 580, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jLabelPesquisar))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabelSelTurno)
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabelSelTurno)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
@@ -131,13 +135,19 @@ public class VisualizarTurma extends javax.swing.JFrame {
                                 .addComponent(jLabelSelTurma)
                                 .addGap(107, 107, 107)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabelSelAno)
+                                    .addComponent(jLabelSelSala)
+                                    .addComponent(jLabelSelAno))
+                                .addGap(75, 75, 75)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabelSelSala)
-                                        .addGap(75, 75, 75)
-                                        .addComponent(jLabelSelDisciplina)))))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                                        .addComponent(jLabelSelProfessor)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jCadastrarNotaBtn))
+                                    .addComponent(jLabelSelDisciplina))))
+                        .addGap(33, 33, 33))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 580, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -147,15 +157,15 @@ public class VisualizarTurma extends javax.swing.JFrame {
                     .addComponent(jLabelSelTurma)
                     .addComponent(jLabelSelSala)
                     .addComponent(jLabelSelDisciplina))
-                .addGap(26, 26, 26)
+                .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabelPesquisar))
                     .addComponent(jLabelSelTurno)
-                    .addComponent(jLabelSelAno, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabelSelAno, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jCadastrarNotaBtn)
+                        .addComponent(jLabelSelProfessor)))
+                .addGap(9, 9, 9)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3)
                 .addContainerGap())
@@ -165,21 +175,28 @@ public class VisualizarTurma extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void jCadastrarNotaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCadastrarNotaBtnActionPerformed
+        int selIndex = jTableAlunos.getSelectedRow();        
+        Notas nt = new Notas(listAluno.get(selIndex),u,t);
+        nt.setVisible(true);
+    }//GEN-LAST:event_jCadastrarNotaBtnActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_formWindowActivated
 
     
     private void loadAlunosJTable(){
         DefaultTableModel model = (DefaultTableModel) jTableAlunos.getModel();
         AlunoDAO alunoDAO = new AlunoDAO();                        
+        listAluno = alunoDAO.listAlunos(t);
         
-        alunoDAO.listAlunos(t).stream().forEach((a) -> {
+        for(Aluno a: listAluno){
             model.addRow(new Object[]{
                 a.getMatricula(),
                 a.getNome()
             });
-        });
+        }    
     }
     
     /**
@@ -218,15 +235,15 @@ public class VisualizarTurma extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jCadastrarNotaBtn;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabelPesquisar;
     private javax.swing.JLabel jLabelSelAno;
     private javax.swing.JLabel jLabelSelDisciplina;
+    private javax.swing.JLabel jLabelSelProfessor;
     private javax.swing.JLabel jLabelSelSala;
     private javax.swing.JLabel jLabelSelTurma;
     private javax.swing.JLabel jLabelSelTurno;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableAlunos;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

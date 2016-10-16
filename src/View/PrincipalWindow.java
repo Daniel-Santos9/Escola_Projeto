@@ -14,7 +14,6 @@ public class PrincipalWindow extends javax.swing.JFrame {
     public PrincipalWindow(Usuario u) {
         initComponents();
         userLogged = u;
-        
         jLoginLabel.setText(userLogged.getNome());
         loadTurmasTable();
     }
@@ -350,8 +349,8 @@ public class PrincipalWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_jCadastrarFuncionarioBtnActionPerformed
 
     private void jCadastrarNotasBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCadastrarNotasBtnActionPerformed
-          Notas no = new Notas(jLoginLabel.getText());
-          no.setVisible(true);
+          //Notas no = new Notas(jLoginLabel.getText());
+          //no.setVisible(true);
            //this.dispose();
     }//GEN-LAST:event_jCadastrarNotasBtnActionPerformed
 
@@ -362,7 +361,7 @@ public class PrincipalWindow extends javax.swing.JFrame {
     private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
         int selIndex = jTableTurmas.getSelectedRow();
                 
-        VisualizarTurma vt = new VisualizarTurma(listTurma.get(selIndex));
+        VisualizarTurma vt = new VisualizarTurma(listTurma.get(selIndex),userLogged);
         vt.setVisible(true);
     }//GEN-LAST:event_jLabel10MouseClicked
 

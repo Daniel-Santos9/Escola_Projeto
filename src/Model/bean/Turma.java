@@ -1,7 +1,7 @@
 package Model.bean;
 
 public class Turma {
-    protected int turma_id;
+    protected int turma_id, id_disc;
     protected String serie, turno, sala,ano,disc_nome;
 
     public int getTurma_id() {
@@ -53,5 +53,15 @@ public class Turma {
 
     public void setDisc_nome(String disc_nome) {
         this.disc_nome = disc_nome;
-    }  
+    } 
+
+    public int getId_disc() {
+        return id_disc;
+    }
+
+    public void setId_disc(int id_disc) {
+        this.id_disc = id_disc;
+    }
+    
+    
 }
