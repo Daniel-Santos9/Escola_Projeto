@@ -84,7 +84,7 @@ public class TurmaDAO {
         try {
            
             int id_user = udao.procura_usuario(login);
-            sql = "SELECT t.Turma_Id,t.Turma_Turno,t.Turma_Serie, t.Turma_Sala, t.Turma_Ano FROM TURMA t " +
+            sql = "SELECT t.Turma_Id,t.Turma_Turno,t.Turma_Serie, t.Turma_Sala, t.Turma_Ano,d.Disc_Nome FROM TURMA t " +
                     "INNER JOIN RTDP r ON t.turma_id=r.id_turma " +
                     "INNER JOIN PROFESSOR p ON p.prof_id=r.id_prof " +
                     "INNER JOIN DISCIPLINA d ON d.disc_id = r.id_disc " +
@@ -100,6 +100,8 @@ public class TurmaDAO {
                 t.setTurno(rs.getString(2));
                 t.setSerie(rs.getString(3));
                 t.setSala(rs.getString(4));
+                t.setAno(rs.getString(5));
+                t.setDisc_nome(rs.getString(6));
                 
                 turm.add(t);
             }

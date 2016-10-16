@@ -27,7 +27,8 @@ public class VisualizarTurma extends javax.swing.JFrame {
                 
         initComponents();                       
         loadAlunosJTable();
-        
+        jLabelSelAno.setText("Ano: "+this.t.getAno());
+        jLabelSelDisciplina.setText("Disciplina: "+this.t.getDisc_nome());
         jLabelSelTurma.setText("Série: "+this.t.getSerie());
         jLabelSelTurno.setText("Turno: "+this.t.getTurno());
         jLabelSelSala.setText("Sala: "+this.t.getSala());
@@ -50,10 +51,12 @@ public class VisualizarTurma extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableAlunos = new javax.swing.JTable();
         jTextField1 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
+        jLabelPesquisar = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabelSelTurno = new javax.swing.JLabel();
         jLabelSelSala = new javax.swing.JLabel();
+        jLabelSelAno = new javax.swing.JLabel();
+        jLabelSelDisciplina = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -91,13 +94,17 @@ public class VisualizarTurma extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setText("Pesquisar:");
+        jLabelPesquisar.setText("Pesquisar:");
 
         jLabel3.setText("Clique duas vezes sobre um aluno para visualizar as informações referentes ao mesmo");
 
         jLabelSelTurno.setText("Turno");
 
         jLabelSelSala.setText("Sala");
+
+        jLabelSelAno.setText("Ano");
+
+        jLabelSelDisciplina.setText("Disciplina");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -111,7 +118,7 @@ public class VisualizarTurma extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jLabel2))
+                                .addComponent(jLabelPesquisar))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabelSelTurno)
                                 .addGap(0, 0, Short.MAX_VALUE)))
@@ -119,11 +126,16 @@ public class VisualizarTurma extends javax.swing.JFrame {
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabelSelTurma)
                                 .addGap(107, 107, 107)
-                                .addComponent(jLabelSelSala))
-                            .addComponent(jLabel3))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabelSelAno)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabelSelSala)
+                                        .addGap(75, 75, 75)
+                                        .addComponent(jLabelSelDisciplina)))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -133,15 +145,17 @@ public class VisualizarTurma extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelSelTurma)
-                    .addComponent(jLabelSelSala))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jLabelSelSala)
+                    .addComponent(jLabelSelDisciplina))
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel2))
-                    .addComponent(jLabelSelTurno))
+                        .addComponent(jLabelPesquisar))
+                    .addComponent(jLabelSelTurno)
+                    .addComponent(jLabelSelAno, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3)
                 .addContainerGap())
@@ -204,8 +218,10 @@ public class VisualizarTurma extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabelPesquisar;
+    private javax.swing.JLabel jLabelSelAno;
+    private javax.swing.JLabel jLabelSelDisciplina;
     private javax.swing.JLabel jLabelSelSala;
     private javax.swing.JLabel jLabelSelTurma;
     private javax.swing.JLabel jLabelSelTurno;

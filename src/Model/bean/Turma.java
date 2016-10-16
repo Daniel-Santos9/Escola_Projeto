@@ -2,7 +2,7 @@ package Model.bean;
 
 public class Turma {
     protected int turma_id;
-    protected String serie, turno, sala;
+    protected String serie, turno, sala,ano,disc_nome;
 
     public int getTurma_id() {
         return turma_id;
@@ -35,5 +35,23 @@ public class Turma {
     public void setSala(String sala) {
         this.sala = sala;
     }
+
+    public String getAno() {
+        return ano;
+    }
+
+    public void setAno(String ano) {
+        this.ano = ano;
+    }
     
+    //Essa variável é usada apenas para listar as disciplinas
+    // que os professores logados lecionam naquela turma
+
+    public String getDisc_nome() {
+        return disc_nome;
+    }
+
+    public void setDisc_nome(String disc_nome) {
+        this.disc_nome = disc_nome;
+    }  
 }

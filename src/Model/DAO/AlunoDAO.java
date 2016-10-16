@@ -101,7 +101,7 @@ public class AlunoDAO {
         ResultSet rs = null;
         String sql = null;
         
-        List<Aluno> alunosList = new ArrayList<Aluno>();
+        List<Aluno> alunosList = new ArrayList<>();
         
         try {
             
@@ -123,8 +123,6 @@ public class AlunoDAO {
         }finally{
             ConnectionFactory.closeConnection(con, stmt, rs);
         }
-        
-        
         
         return alunosList;
     }
