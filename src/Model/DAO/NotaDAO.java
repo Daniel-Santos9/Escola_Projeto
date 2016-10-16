@@ -63,7 +63,7 @@ public class NotaDAO {
                     "INNER JOIN ALUNO a ON a.Alu_Matricu = n.Matricu_Alu " +
                     "INNER JOIN DISCIPLINA d ON d.Disc_ID = n.ID_Disc " +
                     "WHERE d.Disc_ID = "+id_disc+" "+
-                    "AND a.Alu_Matricu = "+matri_alu+" ";
+                    "AND a.Alu_Matricu = "+matri_alu+" AND n.Status = 1";
             stmt = con.prepareStatement(sql);          
             stmt.executeQuery(sql);
             rs = stmt.executeQuery(sql);
@@ -86,5 +86,48 @@ public class NotaDAO {
         }
         
         return no;
-    } 
+    }
+    
+    public boolean UpdateNotas(Nota n){
+              
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        String sql;
+        
+        try {
+                     
+            sql = "UPDATE Nota SET Nota_Tipo = '"+n.getDescricao()+"',Nota_Valor = "+n.getValor()+" ,Nota_Bimestre = '"+n.getBimestre()+"' WHERE Nota_ID = "+n.getNota_id()+" ;";
+            stmt = con.prepareStatement(sql);   
+            stmt.executeQuery(sql);
+            return true;
+        } 
+        catch (SQLException ex) {
+            Logger.getLogger(ProfessorDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }  
+        finally{
+            ConnectionFactory.closeConnection(con, stmt);
+        }
+        return false;
+    }
+    
+        public boolean DeleteNotas(Nota n, int id_user){
+              
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        String sql;
+        
+        try {          
+            sql = "UPDATE Nota SET DT_Excl = CURDATE(), HR_Excl = CURTIME(), User_Excl= "+id_user+", Status = 0 WHERE Nota_ID = "+n.getNota_id()+" ;";
+            stmt = con.prepareStatement(sql);   
+            stmt.executeQuery(sql);
+            return true;
+        } 
+        catch (SQLException ex) {
+            Logger.getLogger(ProfessorDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }  
+        finally{
+            ConnectionFactory.closeConnection(con, stmt);
+        }
+        return false;
+    }
 }

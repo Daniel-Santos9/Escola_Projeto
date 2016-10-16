@@ -3,6 +3,7 @@ package View;
 import Model.DAO.UsuarioDAO;
 import Model.bean.Usuario;
 import java.awt.Cursor;
+import java.awt.event.ActionEvent;
 import javax.swing.JOptionPane;
 
 /**
@@ -202,9 +203,6 @@ public class LoginWindow extends javax.swing.JFrame {
             
     }//GEN-LAST:event_jLEntrarBtnMouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

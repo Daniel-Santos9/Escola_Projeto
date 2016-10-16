@@ -1,7 +1,6 @@
 package View;
 
 
-import Model.DAO.AlunoDAO;
 import Model.DAO.NotaDAO;
 import Model.bean.Aluno;
 import Model.bean.Disciplina;
@@ -20,7 +19,9 @@ public class Notas extends javax.swing.JFrame {
     private Usuario u;
     private Turma t ;
     private Aluno a ;
+    private Nota n;
     private List<Nota> listNota = null;
+    private int muda = 1;
     
     public Notas() {
         initComponents();
@@ -33,7 +34,7 @@ public class Notas extends javax.swing.JFrame {
         this.u = u;
         this.t = t;
         loadNotasJTable();
-        
+        jLabelMsg.setVisible(false);
         jAlunoLabel.setText("Aluno: "+this.a.getNome());
         jProfessorLabel.setText("Professor: "+this.u.getNome());
         jTurmaLabel.setText("Série: "+this.t.getSerie());
@@ -137,10 +138,8 @@ public class Notas extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTurmaLabel)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jTunoLabel)
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jTunoLabel))
+                        .addGap(0, 163, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jAlunoLabel)
                             .addComponent(jDisciplinaLabel))
@@ -218,12 +217,19 @@ public class Notas extends javax.swing.JFrame {
             }
         });
 
-        jCadastrarBtn1.setText("CADASTRAR");
+        jCadastrarBtn1.setText("SALVAR");
         jCadastrarBtn1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCadastrarBtn1ActionPerformed(evt);
             }
         });
+
+        jLabelMsg.setBackground(new java.awt.Color(231, 76, 60));
+        jLabelMsg.setFont(new java.awt.Font("Open Sans", 1, 12)); // NOI18N
+        jLabelMsg.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelMsg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelMsg.setText("Por favor preencha todos os campos!");
+        jLabelMsg.setOpaque(true);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -231,22 +237,16 @@ public class Notas extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
+                .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelMsg, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jCadastrarBtn1)
-                                .addGap(60, 60, 60)
-                                .addComponent(jEditarBtn)
-                                .addGap(51, 51, 51)
-                                .addComponent(jDeletarBtn))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(jLabelMsg, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jCadastrarBtn1)
+                        .addGap(60, 60, 60)
+                        .addComponent(jEditarBtn)
+                        .addGap(51, 51, 51)
+                        .addComponent(jDeletarBtn)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -258,11 +258,11 @@ public class Notas extends javax.swing.JFrame {
                     .addComponent(jEditarBtn)
                     .addComponent(jDeletarBtn)
                     .addComponent(jCadastrarBtn1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addComponent(jLabelMsg)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                .addComponent(jLabelMsg, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(27, 27, 27))
         );
 
         pack();
@@ -281,38 +281,83 @@ public class Notas extends javax.swing.JFrame {
     }//GEN-LAST:event_jTipoTfActionPerformed
 
     private void jEditarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jEditarBtnActionPerformed
-        // TODO add your handling code here:
+        int selIndex = jTableNotas.getSelectedRow();        
+        
+        if(selIndex>=0){
+            muda = 2;
+            n = (Nota) listNota.get(selIndex);
+            jTipoTf.setText(n.getDescricao());
+            jValorTf.setText(Float.toString(n.getValor()));
+            jBimestreTf.setText(n.getBimestre());
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Selecione uma nota na tabela a ser alterada");   
+        }
     }//GEN-LAST:event_jEditarBtnActionPerformed
 
     private void jDeletarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDeletarBtnActionPerformed
-        // TODO add your handling code here:
+        int selIndex = jTableNotas.getSelectedRow();        
+        
+        if(selIndex>=0){
+            n = (Nota) listNota.get(selIndex);
+            NotaDAO ndao = new NotaDAO();
+            
+            if(ndao.DeleteNotas(n, u.getUser_id())){
+                JOptionPane.showMessageDialog(null, "Nota Deletada com Sucesso"); 
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Erro ao Excluir Nota"); 
+            }     
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Selecione uma nota na tabela a ser Excluida");   
+        }
     }//GEN-LAST:event_jDeletarBtnActionPerformed
 
     private void jCadastrarBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCadastrarBtn1ActionPerformed
-        if(jTipoTf.getText().equals("") || jValorTf.getText().equals("") 
-                || jBimestreTf.getText().equals("")){
-            
-            jLabelMsg.setVisible(true);
-        }
-        else{
-            Nota no = new Nota();
-            NotaDAO ndao = new NotaDAO();
-            
-            no.setBimestre(jBimestreTf.getText());
-            no.setDescricao(jTipoTf.getText());
-            no.setValor(Float.parseFloat(jValorTf.getText()));
-         
-            Disciplina d = new Disciplina();
-            d.setDisc_id(t.getId_disc());
-                
-            if(ndao.create(no, a, d, u.getLogin())){
-                JOptionPane.showMessageDialog(null, "Cadastro Realizado com Sucesso");
-                jLLimparBtnMouseClicked(evt);
+        
+        if(muda==1){
+            if(jTipoTf.getText().equals("") || jValorTf.getText().equals("") 
+                    || jBimestreTf.getText().equals("")){
+
+                jLabelMsg.setText("Preencha todos os campos");
+                jLabelMsg.setVisible(true);
             }
             else{
-                JOptionPane.showMessageDialog(null, "Cadastro Não Realizado");
+                jLabelMsg.setVisible(false);
+                Nota no = new Nota();
+                NotaDAO ndao = new NotaDAO();
+
+                no.setBimestre(jBimestreTf.getText());
+                no.setDescricao(jTipoTf.getText());
+                no.setValor(Float.parseFloat(jValorTf.getText()));
+
+                Disciplina d = new Disciplina();
+                d.setDisc_id(t.getId_disc());
+
+                if(ndao.create(no, a, d, u.getLogin())){
+                    JOptionPane.showMessageDialog(null, "Cadastro Realizado com Sucesso");
+                    jLLimparBtnMouseClicked(evt);
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Cadastro Não Realizado");
+                }
+
             }
-                
+        }
+        else{
+            n.setBimestre(jBimestreTf.getText());
+            n.setDescricao(jTipoTf.getText());
+            n.setValor(Float.parseFloat(jValorTf.getText()));
+
+            NotaDAO  ndao = new NotaDAO();
+
+            if(ndao.UpdateNotas(n)){
+                JOptionPane.showMessageDialog(null, "Nota Alterada com Sucesso");  
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Erro ao Alterar Nota");   
+            }
         }
     }//GEN-LAST:event_jCadastrarBtn1ActionPerformed
 

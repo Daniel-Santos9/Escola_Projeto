@@ -88,13 +88,14 @@ public class UsuarioDAO {
         PreparedStatement stmt = null;
         ResultSet rs = null;
         try {
-            String sql = "SELECT User_Tipo, User_Nome FROM usuario "
+            String sql = "SELECT User_Tipo, User_Nome, User_ID FROM usuario "
                          + "WHERE User_Login = '"+u.getLogin()+"' AND User_Senha = '"+u.getSenha()+"';";
             stmt = con.prepareStatement(sql);
             
             rs = stmt.executeQuery();
             
             if(rs.first()){
+                u.setUser_id(rs.getInt(3));
                 u.setTipo_user(rs.getString(1));
                 u.setNome(rs.getString(2));
                 return true;
