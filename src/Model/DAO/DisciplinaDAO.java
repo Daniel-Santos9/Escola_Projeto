@@ -120,5 +120,40 @@ public class DisciplinaDAO {
         }
         
         return disc;
-    }    
+    }
+
+    public List<Disciplina> ListDisciplina(){
+        
+        String sql;
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        List<Disciplina> disc = new ArrayList<>();
+        
+        try {
+           
+            sql = "SELECT d.Disc_ID,d.Disc_Nome,d.Disc_Descricao, d.Disc_AS FROM DISCIPLINA d ";
+            stmt = con.prepareStatement(sql);          
+            stmt.executeQuery(sql);
+            rs = stmt.executeQuery(sql);
+             
+            while(rs.next()){
+                Disciplina d = new Disciplina();
+                d.setDisc_id(rs.getInt(1));
+                d.setNome(rs.getString(2));
+                d.setDescricao(rs.getString(3));
+                d.setAula_sem(rs.getString(4));
+                
+                disc.add(d);
+            }
+        } 
+        catch (SQLException ex) {
+            Logger.getLogger(ProfessorDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        finally{
+            ConnectionFactory.closeConnection(con, stmt,rs);
+        }
+        
+        return disc;
+    }     
  }

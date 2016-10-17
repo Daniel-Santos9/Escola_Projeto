@@ -36,5 +36,10 @@ public class Disciplina {
         this.aula_sem = aula_sem;
     }
     
+    @Override
+    
+    public String toString(){
+        return ""+this.nome;
+    }  
     
 }

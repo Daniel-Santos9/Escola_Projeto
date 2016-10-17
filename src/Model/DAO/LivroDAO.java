@@ -18,22 +18,16 @@ import javax.swing.JOptionPane;
 
 public class LivroDAO {
     
-    public boolean create( Livro l, Disciplina d,String login){
+    public boolean create( Livro l, Disciplina d,int user_inser){
           
-        DisciplinaDAO ddao = new DisciplinaDAO();
-        UsuarioDAO udao = new UsuarioDAO();
-        
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         String sql;
         
         try {
-            
-            int user_inser = udao.procura_usuario(login);
-            int id_disc = ddao.procura_disc(d);
-            
+                     
             sql = "INSERT INTO Livro (Livro_Nome,Livro_Descri,ID_Disc,DT_Inser,HR_Inser,User_Inser,Status)"
-                    + " VALUES('"+l.getNome()+"','"+l.getDescricao()+"','"+id_disc+"',CURDATE(),CURTIME(),"+user_inser+","+1+");";
+                    + " VALUES('"+l.getNome()+"','"+l.getDescricao()+"','"+d.getDisc_id()+"',CURDATE(),CURTIME(),"+user_inser+","+1+");";
             stmt = con.prepareStatement(sql);   
             stmt.executeQuery(sql);
             return true;
@@ -41,12 +35,6 @@ public class LivroDAO {
         catch (SQLException ex) {
             Logger.getLogger(ProfessorDAO.class.getName()).log(Level.SEVERE, null, ex);
         }  
-        catch (DisciplinaInvalidaException ex) {
-            JOptionPane.showMessageDialog(null,ex.getMessage());
-        } 
-        catch (UsuarioInvalidoException ex) {
-            JOptionPane.showMessageDialog(null,ex.getMessage());
-        }
         finally{
             ConnectionFactory.closeConnection(con, stmt);
         }

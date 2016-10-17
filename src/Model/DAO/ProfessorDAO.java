@@ -8,6 +8,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -85,5 +87,47 @@ public class ProfessorDAO {
             ConnectionFactory.closeConnection(con, stmt);
         }
     return false;
+    }
+    
+    public List<Professor> ListarProfessores(){
+    
+        String sql;
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        List<Professor> prof = new ArrayList<>();
+        
+        try {
+           
+            sql = "SELECT p.Prof_ID,p.Prof_CPF,p.Prof_RG,p.Prof_Email,p.Prof_Graduacao,u.User_ID, u.User_Login, u.User_Nome"
+                    + " FROM Professor p "
+                    + "INNER JOIN Usuario u ON u.User_ID = p.ID_User"
+                    + ";";
+ 
+            stmt = con.prepareStatement(sql);          
+            stmt.executeQuery(sql);
+            rs = stmt.executeQuery(sql);
+             
+            while(rs.next()){
+                Professor p = new Professor();
+                p.setProf_id(rs.getInt(1));
+                p.setCPF(rs.getString(2));
+                p.setRG(rs.getString(3));
+                p.setEmail(rs.getString(4));
+                p.setGraduacao(rs.getString(5));
+                p.setId_user(rs.getInt(6));
+                p.setLogin(rs.getString(7));
+                p.setNome(rs.getString(8));
+                prof.add(p);
+            }
+        } 
+        catch (SQLException ex) {
+            Logger.getLogger(ProfessorDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        finally{
+            ConnectionFactory.closeConnection(con, stmt,rs);
+        }
+        
+        return prof;        
     }
 }

@@ -17,10 +17,9 @@ import javax.swing.JOptionPane;
 
 public class ExemplarDAO {
     
-    public boolean create( Exemplar e, Livro l,String login){
+    public boolean create( Exemplar e, Livro l,int user_inser){
           
         LivroDAO ldao = new LivroDAO();
-        UsuarioDAO udao = new UsuarioDAO();
         
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
@@ -28,7 +27,6 @@ public class ExemplarDAO {
         
         try {
             
-            int user_inser = udao.procura_usuario(login);
             int livro_id = ldao.procura_livro(l);
             
             sql = "INSERT INTO Exemplar (Exem_Num,ID_Livro,DT_Inser,HR_Inser,User_Inser,Status)"
@@ -40,9 +38,6 @@ public class ExemplarDAO {
         catch (SQLException ex) {
             Logger.getLogger(ProfessorDAO.class.getName()).log(Level.SEVERE, null, ex);
         }  
-        catch (UsuarioInvalidoException ex) {
-            JOptionPane.showMessageDialog(null,ex.getMessage());
-        } 
         catch (LivroInvalidoException ex) {
             JOptionPane.showMessageDialog(null,ex.getMessage());
         }
