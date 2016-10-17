@@ -54,16 +54,13 @@ public class PaisDAO {
                   "' AND Pais_Mae = '"+p.getNome_mae()+
                   "' AND Pais_Logradouro = '"+p.getLogradouro()+
                   "' AND Pais_Num = '"+p.getNum()+
-                  ";";
+                  "';";
             stmt = con.prepareStatement(sql);          
             stmt.executeQuery(sql);
             rs = stmt.executeQuery(sql);
             
             if(rs.first()){
                 return rs.getInt(1);
-            }
-            else{
-                throw new PaisInvalidoException();
             }
         } 
         catch (SQLException ex) {
@@ -73,6 +70,40 @@ public class PaisDAO {
             ConnectionFactory.closeConnection(con, stmt,rs);
         }
         return -1;       
+    }
+
+    public Pais InformationTurma(int id_pais){
+        
+        String sql;
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        Pais p = new Pais();
+        
+        try {
+           
+            sql = "SELECT Pais_ID,Pais_Pai,Pais_Mae,Pais_Logradouro,Pais_Num"
+                    + " FROM PAIS  WHERE Pais_ID = "+id_pais+";";
+            stmt = con.prepareStatement(sql);          
+            stmt.executeQuery(sql);
+            rs = stmt.executeQuery(sql);
+             
+            if(rs.first()){
+                p.setPais_id(rs.getInt(1));
+                p.setNome_pai(rs.getString(2));
+                p.setNome_mae(rs.getString(3));
+                p.setLogradouro(rs.getString(4));
+                p.setNum(rs.getString(5));
+            }
+        } 
+        catch (SQLException ex) {
+            Logger.getLogger(ProfessorDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        finally{
+            ConnectionFactory.closeConnection(con, stmt,rs);
+        }
+        
+        return p;
     }    
   
 }

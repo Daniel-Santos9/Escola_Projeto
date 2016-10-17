@@ -105,7 +105,7 @@ public class AlunoDAO {
         
         try {
             
-            sql = "SELECT Alu_Matricu, Alu_Nome FROM Aluno WHERE ID_Turma = "+t.getTurma_id();
+            sql = "SELECT Alu_Matricu, Alu_Nome, Alu_CPF, Alu_RG, Alu_Email, ID_Turma, ID_Pais FROM Aluno WHERE ID_Turma = "+t.getTurma_id();
             stmt = con.prepareStatement(sql);
             rs = stmt.executeQuery();
             
@@ -114,6 +114,11 @@ public class AlunoDAO {
                 
                 a.setNome(rs.getString("Alu_Nome"));
                 a.setMatricula(rs.getInt("Alu_Matricu"));
+                a.setCPF(rs.getString("Alu_CPF"));
+                a.setRG(rs.getString("Alu_RG"));
+                a.setEmail(rs.getString("Alu_Email"));
+                a.setId_turma(rs.getInt("ID_Turma"));
+                a.setId_pais(rs.getInt("ID_Pais"));
                 
                 alunosList.add(a);
             }

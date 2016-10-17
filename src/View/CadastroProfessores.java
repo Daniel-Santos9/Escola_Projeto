@@ -5,14 +5,14 @@ import Model.bean.Professor;
 import Tratamento_Exception.TextFieldValidator;
 import javax.swing.JOptionPane;
 
-public class Cadastro_Professores extends javax.swing.JFrame {
+public class CadastroProfessores extends javax.swing.JFrame {
 
     TextFieldValidator validator = new TextFieldValidator();
     
-    public Cadastro_Professores() {
+    public CadastroProfessores() {
         initComponents();
     }
-    public Cadastro_Professores(String login) {
+    public CadastroProfessores(String login) {
         initComponents();
         jLabel1.setText(login);
         jLabelMsg.setVisible(false);
@@ -46,8 +46,6 @@ public class Cadastro_Professores extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(600, 516));
-        setPreferredSize(new java.awt.Dimension(600, 544));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -333,14 +331,16 @@ public class Cadastro_Professores extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Cadastro_Professores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroProfessores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Cadastro_Professores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroProfessores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Cadastro_Professores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroProfessores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Cadastro_Professores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroProfessores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
@@ -348,7 +348,7 @@ public class Cadastro_Professores extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new Cadastro_Professores().setVisible(true);
+                new CadastroProfessores().setVisible(true);
             }
         });
     }

@@ -10,6 +10,7 @@ import Model.bean.Aluno;
 import Model.bean.Turma;
 import Model.bean.Usuario;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 import javax.swing.table.DefaultTableModel;
 
@@ -92,6 +93,11 @@ public class VisualizarTurma extends javax.swing.JFrame {
         jTableAlunos.setRowHeight(20);
         jTableAlunos.setRowMargin(2);
         jTableAlunos.setShowVerticalLines(false);
+        jTableAlunos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableAlunosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTableAlunos);
         if (jTableAlunos.getColumnModel().getColumnCount() > 0) {
             jTableAlunos.getColumnModel().getColumn(0).setMinWidth(100);
@@ -177,13 +183,30 @@ public class VisualizarTurma extends javax.swing.JFrame {
 
     private void jCadastrarNotaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCadastrarNotaBtnActionPerformed
         int selIndex = jTableAlunos.getSelectedRow();        
-        Notas nt = new Notas(listAluno.get(selIndex),u,t);
-        nt.setVisible(true);
+        if(selIndex>=0){
+            Notas nt = new Notas(listAluno.get(selIndex),u,t);
+            nt.setVisible(true);
+        }
+        else{
+            JOptionPane.showMessageDialog(null,"Selecione um aluno para cadastra uma nota");
+        }
     }//GEN-LAST:event_jCadastrarNotaBtnActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_formWindowActivated
+
+    private void jTableAlunosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableAlunosMouseClicked
+        int selIndex = jTableAlunos.getSelectedRow();
+        
+        if(selIndex>=0){
+            CadastroAlunos ca = new CadastroAlunos(u,listAluno.get(selIndex));
+            ca.setVisible(true);
+        }
+        else{
+            JOptionPane.showMessageDialog(null,"Selecione um aluno para Ver informações");
+        }
+    }//GEN-LAST:event_jTableAlunosMouseClicked
 
     
     private void loadAlunosJTable(){

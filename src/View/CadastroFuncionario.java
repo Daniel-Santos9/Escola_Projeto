@@ -5,15 +5,15 @@ import Model.bean.Usuario;
 import Tratamento_Exception.TextFieldValidator;
 import javax.swing.JOptionPane;
 
-public class Cadastro_Funcionario extends javax.swing.JFrame {
+public class CadastroFuncionario extends javax.swing.JFrame {
 
     TextFieldValidator validator = new TextFieldValidator();
     
-    public Cadastro_Funcionario() {
+    public CadastroFuncionario() {
         initComponents();
     }
     
-    public Cadastro_Funcionario(String login) {
+    public CadastroFuncionario(String login) {
         initComponents();
         Login.setText(login);
         
@@ -40,7 +40,6 @@ public class Cadastro_Funcionario extends javax.swing.JFrame {
         Login = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(350, 397));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -187,21 +186,23 @@ public class Cadastro_Funcionario extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Cadastro_Funcionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Cadastro_Funcionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Cadastro_Funcionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Cadastro_Funcionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Cadastro_Funcionario().setVisible(true);
+                new CadastroFuncionario().setVisible(true);
             }
         });
     }

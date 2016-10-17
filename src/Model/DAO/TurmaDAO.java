@@ -118,4 +118,38 @@ public class TurmaDAO {
         
         return turm;
     }
+
+    public Turma InformationTurma(int id_turma){
+        
+        String sql;
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        Turma t = new Turma();
+        
+        try {
+           
+            sql = "SELECT t.Turma_Id,t.Turma_Turno,t.Turma_Serie, t.Turma_Sala, t.Turma_Ano"
+                    + " FROM TURMA t WHERE Turma_ID = "+id_turma+";";
+            stmt = con.prepareStatement(sql);          
+            stmt.executeQuery(sql);
+            rs = stmt.executeQuery(sql);
+             
+            if(rs.first()){
+                t.setTurma_id(rs.getInt(1));
+                t.setTurno(rs.getString(2));
+                t.setSerie(rs.getString(3));
+                t.setSala(rs.getString(4));
+                t.setAno(rs.getString(5));
+            }
+        } 
+        catch (SQLException ex) {
+            Logger.getLogger(ProfessorDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        finally{
+            ConnectionFactory.closeConnection(con, stmt,rs);
+        }
+        
+        return t;
+    }
 }

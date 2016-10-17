@@ -1,27 +1,55 @@
 package View;
 
 import Model.DAO.AlunoDAO;
+import Model.DAO.PaisDAO;
+import Model.DAO.TurmaDAO;
 import Model.bean.Aluno;
 import Model.bean.Pais;
 import Model.bean.Turma;
+import Model.bean.Usuario;
+import Tratamento_Exception.PaisInvalidoException;
 import Tratamento_Exception.TextFieldValidator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-public class Cadastro_Alunos extends javax.swing.JFrame {
+public class CadastroAlunos extends javax.swing.JFrame {
     
     TextFieldValidator validator = new TextFieldValidator();
+    private Usuario u;
+    private Aluno a;
+    private Turma t;
+    private Pais p;
+    PaisDAO pdao = new PaisDAO();
+    TurmaDAO tdao = new TurmaDAO();
     
-    public Cadastro_Alunos() {
+    public CadastroAlunos() {
         initComponents();
     }
-   public Cadastro_Alunos(String login) {
+   public CadastroAlunos(Usuario u) {
         initComponents();
-        Login.setText(login);
+        this.u = u;
+        Login.setText(this.u.getNome());
         
         jLabelMsg.setVisible(false);
         jLRGMsg.setVisible(false);
         jLCPFMsg.setVisible(false);
         jLEmailMsg.setVisible(false);
+    }
+   
+      public CadastroAlunos(Usuario u, Aluno a) {
+        initComponents();
+        this.u = u;
+        this.a = a;
+        this.p = pdao.InformationTurma(a.getId_pais());
+        this.t = tdao.InformationTurma(a.getId_turma());
+        informacao_aluno();
+        jLabelMsg.setVisible(false);
+        jLRGMsg.setVisible(false);
+        jLCPFMsg.setVisible(false);
+        jLEmailMsg.setVisible(false);
+        jLLimpar.setVisible(false);
+        jLCadastrar.setVisible(false);
     }
 
     /**
@@ -142,11 +170,21 @@ public class Cadastro_Alunos extends javax.swing.JFrame {
 
         Serie.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         Serie.setBorder(null);
+        Serie.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                SerieKeyTyped(evt);
+            }
+        });
         getContentPane().add(Serie, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 273, 39, -1));
 
         Turno.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         Turno.setAlignmentY(0.3F);
         Turno.setBorder(null);
+        Turno.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TurnoKeyTyped(evt);
+            }
+        });
         getContentPane().add(Turno, new org.netbeans.lib.awtextra.AbsoluteConstraints(335, 273, 39, -1));
 
         Rua.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
@@ -244,6 +282,36 @@ public class Cadastro_Alunos extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void informacao_aluno(){
+
+        Login.setText(this.u.getNome());
+        
+        //Dados Pessoais
+        CPF.setEnabled(false);
+        CPF.setText(a.getCPF());
+        Nome.setEnabled(false);
+        Nome.setText(a.getNome());
+        RG.setEnabled(false);
+        RG.setText(a.getRG());
+        Email.setEnabled(false);
+        Email.setText(a.getEmail());
+        
+        //Parentescos
+        Num.setEnabled(false);
+        Num.setText(p.getNum());
+        Rua.setEnabled(false);
+        Rua.setText(p.getLogradouro());
+        Mae.setEnabled(false);
+        Mae.setText(p.getNome_mae());
+        Pai.setEnabled(false);
+        Pai.setText(p.getNome_pai());
+        
+        //Dados Turma
+        Serie.setEnabled(false);
+        Serie.setText(t.getSerie());
+        Turno.setEnabled(false);
+        Turno.setText(t.getTurno());
+    }
     private void NomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NomeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_NomeActionPerformed
@@ -278,26 +346,34 @@ public class Cadastro_Alunos extends javax.swing.JFrame {
         }else if(!validator.emailValidate(Email)){            
             jLEmailMsg.setVisible(true);      
         }else{
-            String User_Login = Login.getText();
             
             AlunoDAO adao = new AlunoDAO();
-            Aluno a = new Aluno();
-            a.setCPF(CPF.getText());
-            a.setRG(RG.getText());
-            a.setEmail(Email.getText());
-            a.setNome(Nome.getText());
             
-            Turma t = new Turma();
-            t.setSerie(Serie.getText());
-            t.setTurno(Turno.getText());
+            Aluno al = new Aluno();
+            al.setCPF(CPF.getText());
+            al.setRG(RG.getText());
+            al.setEmail(Email.getText());
+            al.setNome(Nome.getText());
             
-            Pais p = new Pais();
-            p.setLogradouro(Rua.getText());
-            p.setNome_mae(Mae.getText());
-            p.setNome_pai(Pai.getText());
-            p.setNum(Num.getText());
+            Turma tu = new Turma();
+            tu.setSerie(Serie.getText());
+            tu.setTurno(Turno.getText());  
             
-            if(adao.create(a, t, p, User_Login)){
+            Pais pa = new Pais();
+            pa.setLogradouro(Rua.getText());
+            pa.setNome_mae(Mae.getText());
+            pa.setNome_pai(Pai.getText());
+            pa.setNum(Num.getText());
+            
+            try {
+                if(pdao.procura_pais(pa)==-1){
+                    pdao.create(pa, u.getLogin());
+                }
+            } catch (PaisInvalidoException ex) {
+                Logger.getLogger(CadastroAlunos.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            if(adao.create(al, tu, pa, u.getLogin())){
                 JOptionPane.showMessageDialog(null, "Cadastro Realizado com Sucesso");
                 jLLimparMouseClicked(evt);
             }
@@ -355,6 +431,14 @@ public class Cadastro_Alunos extends javax.swing.JFrame {
         validator.maxLengthLimit(Num, 4);
     }//GEN-LAST:event_NumKeyTyped
 
+    private void SerieKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SerieKeyTyped
+        validator.maxLengthLimit(Serie, 6);
+    }//GEN-LAST:event_SerieKeyTyped
+
+    private void TurnoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TurnoKeyTyped
+        validator.maxLengthLimit(Turno, 1);
+    }//GEN-LAST:event_TurnoKeyTyped
+
     /**
      * @param args the command line arguments
      */
@@ -372,14 +456,18 @@ public class Cadastro_Alunos extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Cadastro_Alunos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroAlunos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Cadastro_Alunos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroAlunos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Cadastro_Alunos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroAlunos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Cadastro_Alunos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroAlunos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -389,7 +477,7 @@ public class Cadastro_Alunos extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new Cadastro_Alunos().setVisible(true);
+                new CadastroAlunos().setVisible(true);
             }
         });
     }

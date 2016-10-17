@@ -337,13 +337,13 @@ public class PrincipalWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel4MouseClicked
 
     private void jCadastrarProfessorBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCadastrarProfessorBtnActionPerformed
-          Cadastro_Professores cp = new Cadastro_Professores(jLoginLabel.getText());
+          CadastroProfessores cp = new CadastroProfessores(jLoginLabel.getText());
           cp.setVisible(true);
            //this.dispose();
     }//GEN-LAST:event_jCadastrarProfessorBtnActionPerformed
 
     private void jCadastrarFuncionarioBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCadastrarFuncionarioBtnActionPerformed
-          Cadastro_Funcionario cf = new Cadastro_Funcionario(jLoginLabel.getText());
+          CadastroFuncionario cf = new CadastroFuncionario(jLoginLabel.getText());
           cf.setVisible(true);
            //this.dispose();
     }//GEN-LAST:event_jCadastrarFuncionarioBtnActionPerformed
@@ -355,7 +355,8 @@ public class PrincipalWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_jCadastrarNotasBtnActionPerformed
 
     private void jCadastrarAlunoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCadastrarAlunoBtnActionPerformed
-        // TODO add your handling code here:
+        CadastroAlunos ca = new CadastroAlunos(userLogged);
+        ca.setVisible(true);
     }//GEN-LAST:event_jCadastrarAlunoBtnActionPerformed
 
     private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
