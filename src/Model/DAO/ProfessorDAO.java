@@ -24,8 +24,7 @@ public class ProfessorDAO {
         
         try {
             sql = "SELECT p.Prof_ID FROM Professor p "
-                    + "INNER JOIN Usuario u ON p.Prof_ID = u.ID_Prof"
-                    + " WHERE u.ID_Prof ="+id_user+";";
+                    + " WHERE p.ID_User ="+id_user+";";
             stmt = con.prepareStatement(sql);          
             stmt.executeQuery(sql);
             rs = stmt.executeQuery(sql);
@@ -46,7 +45,7 @@ public class ProfessorDAO {
         return -1;       
     }            
    
-    public boolean create( Professor p, String login){
+    public boolean create( Professor p, int user_inser){
         
         String sql;
 
@@ -61,7 +60,6 @@ public class ProfessorDAO {
             if(udao.create(p)){
                
                 int user_id = udao.procura_usuario(p.getLogin());
-                int user_inser = udao.procura_usuario(login);
                 
                 sql = "INSERT INTO PROFESSOR (Prof_CPF,Prof_RG,Prof_Email,Prof_Graduacao,ID_User,DT_Inser,HR_Inser,User_Inser,Status)"
                        + " VALUES('"+p.getCPF()+"','"+p.getRG()+"','"+p.getEmail()+"','"+p.getGraduacao()+"','"+user_id+"',CURDATE(),CURTIME(),"+user_inser+","+1+");";
@@ -102,7 +100,7 @@ public class ProfessorDAO {
             sql = "SELECT p.Prof_ID,p.Prof_CPF,p.Prof_RG,p.Prof_Email,p.Prof_Graduacao,u.User_ID, u.User_Login, u.User_Nome"
                     + " FROM Professor p "
                     + "INNER JOIN Usuario u ON u.User_ID = p.ID_User"
-                    + ";";
+                    + " ORDER BY u.User_Nome ASC;";
  
             stmt = con.prepareStatement(sql);          
             stmt.executeQuery(sql);

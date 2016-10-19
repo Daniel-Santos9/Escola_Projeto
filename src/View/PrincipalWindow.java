@@ -333,22 +333,26 @@ public class PrincipalWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel4MouseClicked
 
     private void jCadastrarProfessorBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCadastrarProfessorBtnActionPerformed
-          CadastroProfessores cp = new CadastroProfessores(jLoginLabel.getText());
+          FrmCadastroProfessores cp = new FrmCadastroProfessores(userLogged);
+          cp.setLocationRelativeTo(null);
           cp.setVisible(true);
     }//GEN-LAST:event_jCadastrarProfessorBtnActionPerformed
 
     private void jCadastrarFuncionarioBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCadastrarFuncionarioBtnActionPerformed
           CadastroFuncionario cf = new CadastroFuncionario(jLoginLabel.getText());
+          cf.setLocationRelativeTo(null);
           cf.setVisible(true);
     }//GEN-LAST:event_jCadastrarFuncionarioBtnActionPerformed
 
     private void jVisualizarProfessorBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVisualizarProfessorBtnActionPerformed
-        FrmProfessor frmprof = new FrmProfessor();
+        FrmProfessorInformativo frmprof = new FrmProfessorInformativo(userLogged);
+        frmprof.setLocationRelativeTo(null);
         frmprof.setVisible(true);
     }//GEN-LAST:event_jVisualizarProfessorBtnActionPerformed
 
     private void jCadastrarAlunoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCadastrarAlunoBtnActionPerformed
         CadastroAlunos ca = new CadastroAlunos(userLogged);
+        ca.setLocationRelativeTo(null);
         ca.setVisible(true);
     }//GEN-LAST:event_jCadastrarAlunoBtnActionPerformed
 
@@ -356,6 +360,7 @@ public class PrincipalWindow extends javax.swing.JFrame {
         int selIndex = jTableTurmas.getSelectedRow();
                 
         VisualizarTurma vt = new VisualizarTurma(listTurma.get(selIndex),userLogged);
+        vt.setLocationRelativeTo(null);
         vt.setVisible(true);
     }//GEN-LAST:event_jLabel10MouseClicked
 
@@ -376,10 +381,7 @@ public class PrincipalWindow extends javax.swing.JFrame {
             });
         }
     }
-    
-    /**
-     * @param args the command line arguments
-     */
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

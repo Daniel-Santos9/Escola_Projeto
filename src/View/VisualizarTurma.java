@@ -65,7 +65,7 @@ public class VisualizarTurma extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Matrícula", "Nome Completo"
+                "Nº Chamada", "Nome Completo"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -76,21 +76,25 @@ public class VisualizarTurma extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTableAlunos.setColumnSelectionAllowed(true);
+        jTableAlunos.setIntercellSpacing(new java.awt.Dimension(2, 2));
         jTableAlunos.setRowHeight(20);
         jTableAlunos.setRowMargin(2);
-        jTableAlunos.setShowVerticalLines(false);
+        jTableAlunos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
         jTableAlunos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTableAlunosMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(jTableAlunos);
+        jTableAlunos.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         if (jTableAlunos.getColumnModel().getColumnCount() > 0) {
             jTableAlunos.getColumnModel().getColumn(0).setMinWidth(100);
             jTableAlunos.getColumnModel().getColumn(0).setPreferredWidth(100);
             jTableAlunos.getColumnModel().getColumn(0).setMaxWidth(100);
         }
 
+        jLabel3.setForeground(new java.awt.Color(255, 51, 51));
         jLabel3.setText("Clique duas vezes sobre um aluno para visualizar as informações referentes ao mesmo");
 
         jLabelSelTurno.setText("Turno");
@@ -183,26 +187,29 @@ public class VisualizarTurma extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowActivated
 
     private void jTableAlunosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableAlunosMouseClicked
-        int selIndex = jTableAlunos.getSelectedRow();
-        
-        if(selIndex>=0){
-            CadastroAlunos ca = new CadastroAlunos(u,listAluno.get(selIndex));
-            ca.setVisible(true);
-        }
-        else{
-            JOptionPane.showMessageDialog(null,"Selecione um aluno para Ver informações");
+        if (evt.getClickCount() > 1) {
+            int selIndex = jTableAlunos.getSelectedRow();
+            if(selIndex>=0){
+                CadastroAlunos ca = new CadastroAlunos(u,listAluno.get(selIndex));
+                ca.setVisible(true);
+            }
+            else{
+                JOptionPane.showMessageDialog(null,"Selecione um aluno para Ver informações");
+            }
         }
     }//GEN-LAST:event_jTableAlunosMouseClicked
 
     
     private void loadAlunosJTable(){
         DefaultTableModel model = (DefaultTableModel) jTableAlunos.getModel();
-        AlunoDAO alunoDAO = new AlunoDAO();                        
+        AlunoDAO alunoDAO = new AlunoDAO();
+        int cont = 0;
         listAluno = alunoDAO.listAlunos(t);
         
         for(Aluno a: listAluno){
+            ++cont;
             model.addRow(new Object[]{
-                a.getMatricula(),
+                cont,
                 a.getNome()
             });
         }    

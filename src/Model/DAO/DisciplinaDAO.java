@@ -121,6 +121,43 @@ public class DisciplinaDAO {
         
         return disc;
     }
+    
+        public List<Disciplina> read(int prof_id){
+        
+        String sql;
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        List<Disciplina> disc = new ArrayList<>();
+        
+        try {
+           
+            sql = "SELECT DISTINCT d.Disc_Nome FROM DISCIPLINA d " +
+                    "INNER JOIN RTDP r ON d.disc_id = r.id_disc " +
+                    "INNER JOIN PROFESSOR p ON p.prof_id=r.id_prof " +
+                    "INNER JOIN TURMA t ON t.turma_id=r.id_turma " +
+                    "WHERE p.Prof_ID = "+prof_id+" "+
+                    "AND t.turma_ano = YEAR(CURDATE())";
+            stmt = con.prepareStatement(sql);          
+            stmt.executeQuery(sql);
+            rs = stmt.executeQuery(sql);
+             
+            while(rs.next()){
+                Disciplina d = new Disciplina();
+                d.setNome(rs.getString(1));
+                
+                disc.add(d);
+            }
+        } 
+        catch (SQLException ex) {
+            Logger.getLogger(ProfessorDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        finally{
+            ConnectionFactory.closeConnection(con, stmt,rs);
+        }
+        
+        return disc;
+    }
 
     public List<Disciplina> ListDisciplina(){
         

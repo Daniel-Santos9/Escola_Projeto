@@ -99,13 +99,14 @@ public class AlunoDAO {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         ResultSet rs = null;
-        String sql = null;
+        String sql ;
         
         List<Aluno> alunosList = new ArrayList<>();
         
         try {
             
-            sql = "SELECT Alu_Matricu, Alu_Nome, Alu_CPF, Alu_RG, Alu_Email, ID_Turma, ID_Pais FROM Aluno WHERE ID_Turma = "+t.getTurma_id();
+            sql = "SELECT Alu_Matricu, Alu_Nome, Alu_CPF, Alu_RG, Alu_Email, ID_Turma, ID_Pais "
+                    + "FROM Aluno WHERE ID_Turma = "+t.getTurma_id()+" ORDER BY Alu_Nome ASC";
             stmt = con.prepareStatement(sql);
             rs = stmt.executeQuery();
             
