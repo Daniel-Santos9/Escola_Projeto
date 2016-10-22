@@ -88,6 +88,11 @@ public class CadastroLivro extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(jTableProfessores);
+        if (jTableProfessores.getColumnModel().getColumnCount() > 0) {
+            jTableProfessores.getColumnModel().getColumn(0).setHeaderValue("ID Livro");
+            jTableProfessores.getColumnModel().getColumn(1).setHeaderValue("Nome");
+            jTableProfessores.getColumnModel().getColumn(2).setHeaderValue("Quantidade");
+        }
 
         jSalvarBtn.setText("SALVAR");
         jSalvarBtn.addActionListener(new java.awt.event.ActionListener() {
