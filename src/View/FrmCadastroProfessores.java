@@ -4,7 +4,10 @@ import Model.DAO.ProfessorDAO;
 import Model.bean.Professor;
 import Model.bean.Usuario;
 import Tratamento_Exception.TextFieldValidator;
+<<<<<<< HEAD
 import javax.swing.ImageIcon;
+=======
+>>>>>>> origin/master
 import javax.swing.JOptionPane;
 
 public class FrmCadastroProfessores extends javax.swing.JFrame {
@@ -18,9 +21,18 @@ public class FrmCadastroProfessores extends javax.swing.JFrame {
     public FrmCadastroProfessores(Usuario u) {
         initComponents();
         this.u = u;
+<<<<<<< HEAD
         jLabelMsg.setVisible(false);
         jLEmailMsg.setVisible(false);
         jLSenhaMsg.setVisible(false);
+=======
+        space1.setText("");
+        space2.setText("");
+        space3.setText("");
+        jLabelMsg.setText("");
+        jLEmailMsg.setText("");
+        jLSenhaMsg.setText("");
+>>>>>>> origin/master
         jLRGMsg.setVisible(false);
         jLCPFMsg.setVisible(false);
 
@@ -29,7 +41,10 @@ public class FrmCadastroProfessores extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+<<<<<<< HEAD
         Fundo = new javax.swing.JPanel();
+=======
+>>>>>>> origin/master
         jPanelDadosPessoais = new javax.swing.JPanel();
         jRGLabel = new javax.swing.JLabel();
         jEmailLabel = new javax.swing.JLabel();
@@ -40,12 +55,24 @@ public class FrmCadastroProfessores extends javax.swing.JFrame {
         jCPFLabel = new javax.swing.JLabel();
         jCbGraduacao = new javax.swing.JComboBox<>();
         jLCPFMsg = new javax.swing.JLabel();
+<<<<<<< HEAD
+=======
+        space3 = new javax.swing.JLabel();
+>>>>>>> origin/master
         jLRGMsg = new javax.swing.JLabel();
         jCPFFormattedTextField = new javax.swing.JFormattedTextField();
         jRGFormattedTextField = new javax.swing.JFormattedTextField();
         jGraduacaoLabel1 = new javax.swing.JLabel();
         jCbArea = new javax.swing.JComboBox<>();
+<<<<<<< HEAD
         jLEmailMsg = new javax.swing.JLabel();
+=======
+        space1 = new javax.swing.JLabel();
+        space2 = new javax.swing.JLabel();
+        jLEmailMsg = new javax.swing.JLabel();
+        jLabelIconProf = new javax.swing.JLabel();
+        jLabelTitulo = new javax.swing.JLabel();
+>>>>>>> origin/master
         jPanelDadosLogin = new javax.swing.JPanel();
         jLabelMsg = new javax.swing.JLabel();
         jTFUsername = new javax.swing.JTextField();
@@ -55,6 +82,7 @@ public class FrmCadastroProfessores extends javax.swing.JFrame {
         jLSenhaMsg = new javax.swing.JLabel();
         jTFReSenha = new javax.swing.JPasswordField();
         jTFSenha = new javax.swing.JPasswordField();
+<<<<<<< HEAD
         jCadastrarBtn = new javax.swing.JButton();
         jLimparBtn = new javax.swing.JButton();
         jLabeDadosLogin = new javax.swing.JLabel();
@@ -72,6 +100,19 @@ public class FrmCadastroProfessores extends javax.swing.JFrame {
         Fundo.setBackground(new java.awt.Color(255, 255, 255));
         Fundo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(56, 160, 224), 2, true));
 
+=======
+        jCadastrarrBtn = new javax.swing.JButton();
+        jLimparBtn = new javax.swing.JButton();
+        jLabeDadosPessoais = new javax.swing.JLabel();
+        jLabeDadosPessoais1 = new javax.swing.JLabel();
+        jLabelBG = new javax.swing.JLabel();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Cadastro Professor");
+        setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+>>>>>>> origin/master
         jPanelDadosPessoais.setBackground(new java.awt.Color(255, 255, 255));
         jPanelDadosPessoais.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(56, 160, 224), 1, true));
 
@@ -140,6 +181,16 @@ public class FrmCadastroProfessores extends javax.swing.JFrame {
         jLCPFMsg.setMinimumSize(new java.awt.Dimension(160, 16));
         jLCPFMsg.setOpaque(true);
 
+<<<<<<< HEAD
+=======
+        space3.setBackground(new java.awt.Color(56, 160, 224));
+        space3.setFont(new java.awt.Font("Open Sans", 1, 12)); // NOI18N
+        space3.setForeground(new java.awt.Color(255, 255, 255));
+        space3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        space3.setText("Insira um email válido!");
+        space3.setOpaque(true);
+
+>>>>>>> origin/master
         jLRGMsg.setBackground(new java.awt.Color(56, 160, 224));
         jLRGMsg.setFont(new java.awt.Font("Open Sans", 1, 12)); // NOI18N
         jLRGMsg.setForeground(new java.awt.Color(255, 255, 255));
@@ -203,6 +254,25 @@ public class FrmCadastroProfessores extends javax.swing.JFrame {
             }
         });
 
+<<<<<<< HEAD
+=======
+        space1.setBackground(new java.awt.Color(56, 160, 224));
+        space1.setFont(new java.awt.Font("Open Sans", 1, 12)); // NOI18N
+        space1.setForeground(new java.awt.Color(255, 255, 255));
+        space1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        space1.setText("Formato: 000.000.000-00");
+        space1.setMaximumSize(new java.awt.Dimension(160, 16));
+        space1.setMinimumSize(new java.awt.Dimension(160, 16));
+        space1.setOpaque(true);
+
+        space2.setBackground(new java.awt.Color(56, 160, 224));
+        space2.setFont(new java.awt.Font("Open Sans", 1, 12)); // NOI18N
+        space2.setForeground(new java.awt.Color(255, 255, 255));
+        space2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        space2.setText("Formato: 00000000-0");
+        space2.setOpaque(true);
+
+>>>>>>> origin/master
         jLEmailMsg.setBackground(new java.awt.Color(56, 160, 224));
         jLEmailMsg.setFont(new java.awt.Font("Open Sans", 1, 12)); // NOI18N
         jLEmailMsg.setForeground(new java.awt.Color(255, 255, 255));
@@ -217,6 +287,12 @@ public class FrmCadastroProfessores extends javax.swing.JFrame {
             .addGroup(jPanelDadosPessoaisLayout.createSequentialGroup()
                 .addGroup(jPanelDadosPessoaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelDadosPessoaisLayout.createSequentialGroup()
+<<<<<<< HEAD
+=======
+                        .addGap(78, 78, 78)
+                        .addComponent(space2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelDadosPessoaisLayout.createSequentialGroup()
+>>>>>>> origin/master
                         .addGap(77, 77, 77)
                         .addComponent(jLCPFMsg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanelDadosPessoaisLayout.createSequentialGroup()
@@ -246,16 +322,35 @@ public class FrmCadastroProfessores extends javax.swing.JFrame {
                             .addComponent(jRGLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanelDadosPessoaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+<<<<<<< HEAD
                             .addComponent(jCbGraduacao, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jRGFormattedTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jCbArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(32, 32, 32))))
+=======
+                            .addGroup(jPanelDadosPessoaisLayout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(space3, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jCbGraduacao, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jRGFormattedTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jCbArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(32, 32, 32))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelDadosPessoaisLayout.createSequentialGroup()
+                        .addComponent(space1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(45, 45, 45))))
+>>>>>>> origin/master
         );
         jPanelDadosPessoaisLayout.setVerticalGroup(
             jPanelDadosPessoaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelDadosPessoaisLayout.createSequentialGroup()
                 .addGap(5, 5, 5)
+<<<<<<< HEAD
                 .addComponent(jLRGMsg)
+=======
+                .addGroup(jPanelDadosPessoaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLRGMsg)
+                    .addComponent(space2))
+>>>>>>> origin/master
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelDadosPessoaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTFNome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -263,7 +358,13 @@ public class FrmCadastroProfessores extends javax.swing.JFrame {
                     .addComponent(jRGLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jRGFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+<<<<<<< HEAD
                 .addComponent(jLCPFMsg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+=======
+                .addGroup(jPanelDadosPessoaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLCPFMsg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(space1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+>>>>>>> origin/master
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelDadosPessoaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelDadosPessoaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -272,7 +373,13 @@ public class FrmCadastroProfessores extends javax.swing.JFrame {
                     .addComponent(jCbArea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jGraduacaoLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+<<<<<<< HEAD
                 .addComponent(jLEmailMsg)
+=======
+                .addGroup(jPanelDadosPessoaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLEmailMsg)
+                    .addComponent(space3))
+>>>>>>> origin/master
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanelDadosPessoaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jCbGraduacao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -283,6 +390,19 @@ public class FrmCadastroProfessores extends javax.swing.JFrame {
                 .addGap(60, 60, 60))
         );
 
+<<<<<<< HEAD
+=======
+        getContentPane().add(jPanelDadosPessoais, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 560, 180));
+
+        jLabelIconProf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/IconProf.png"))); // NOI18N
+        getContentPane().add(jLabelIconProf, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 10, 60, 50));
+
+        jLabelTitulo.setFont(new java.awt.Font("Arial", 1, 26)); // NOI18N
+        jLabelTitulo.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelTitulo.setText("CADASTRO PROFESSOR");
+        getContentPane().add(jLabelTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, -1, 40));
+
+>>>>>>> origin/master
         jPanelDadosLogin.setBackground(new java.awt.Color(255, 255, 255));
         jPanelDadosLogin.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(56, 160, 224), 1, true));
         jPanelDadosLogin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -351,6 +471,7 @@ public class FrmCadastroProfessores extends javax.swing.JFrame {
         jTFSenha.setPreferredSize(new java.awt.Dimension(181, 23));
         jPanelDadosLogin.add(jTFSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 10, -1, -1));
 
+<<<<<<< HEAD
         jCadastrarBtn.setBackground(new java.awt.Color(255, 255, 255));
         jCadastrarBtn.setForeground(new java.awt.Color(255, 255, 255));
         jCadastrarBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Buttons/CadastrarBtn.png"))); // NOI18N
@@ -383,11 +504,30 @@ public class FrmCadastroProfessores extends javax.swing.JFrame {
                 jLimparBtnMouseExited(evt);
             }
         });
+=======
+        getContentPane().add(jPanelDadosLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 560, 110));
+
+        jCadastrarrBtn.setForeground(new java.awt.Color(255, 255, 255));
+        jCadastrarrBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/CadastrarBtn.png"))); // NOI18N
+        jCadastrarrBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(56, 160, 224), 3, true));
+        jCadastrarrBtn.setPreferredSize(new java.awt.Dimension(194, 51));
+        jCadastrarrBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCadastrarrBtnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jCadastrarrBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 460, -1, -1));
+
+        jLimparBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/LimparBtn.png"))); // NOI18N
+        jLimparBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(56, 160, 224), 3, true));
+        jLimparBtn.setPreferredSize(new java.awt.Dimension(194, 51));
+>>>>>>> origin/master
         jLimparBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jLimparBtnActionPerformed(evt);
             }
         });
+<<<<<<< HEAD
 
         jLabeDadosLogin.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabeDadosLogin.setForeground(new java.awt.Color(56, 164, 220));
@@ -476,16 +616,39 @@ public class FrmCadastroProfessores extends javax.swing.JFrame {
         );
 
         getContentPane().add(Fundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 550));
+=======
+        getContentPane().add(jLimparBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 460, -1, -1));
+
+        jLabeDadosPessoais.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabeDadosPessoais.setForeground(new java.awt.Color(56, 164, 220));
+        jLabeDadosPessoais.setText("Dados de Login");
+        jLabeDadosPessoais.setPreferredSize(new java.awt.Dimension(116, 34));
+        getContentPane().add(jLabeDadosPessoais, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 150, -1));
+
+        jLabeDadosPessoais1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabeDadosPessoais1.setForeground(new java.awt.Color(56, 164, 220));
+        jLabeDadosPessoais1.setText("Dados Pessoais");
+        jLabeDadosPessoais1.setPreferredSize(new java.awt.Dimension(116, 34));
+        getContentPane().add(jLabeDadosPessoais1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 150, -1));
+
+        jLabelBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/CadastroProf.png"))); // NOI18N
+        getContentPane().add(jLabelBG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+>>>>>>> origin/master
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+<<<<<<< HEAD
     private void jCadastrarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCadastrarBtnActionPerformed
+=======
+    private void jCadastrarrBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCadastrarrBtnActionPerformed
+>>>>>>> origin/master
         if(jCPFFormattedTextField.getText().equals("") || jTFNome.getText().equals("") || jRGFormattedTextField.getText().equals("")
                 || jTFEmail.getText().equals("") || jCbArea.getSelectedIndex() == -1 || jTFUsername.getText().equals("")
                 || jTFSenha.getText().equals("") || jCbGraduacao.getSelectedIndex() == -1 || jTFReSenha.getText().equals("")){
             
+<<<<<<< HEAD
             jLabelMsg.setVisible(true);
         }
         else if(!validator.emailValidate(jTFEmail)){            
@@ -498,6 +661,20 @@ public class FrmCadastroProfessores extends javax.swing.JFrame {
             jLabelMsg.setVisible(false);
             jLEmailMsg.setVisible(false);
             jLSenhaMsg.setVisible(false);
+=======
+            jLabelMsg.setText("Por favor preencha todos os campos!");
+        }
+        else if(!validator.emailValidate(jTFEmail)){            
+            jLEmailMsg.setText("Insira um email válido!");      
+        }
+        else if(!jTFSenha.getText().equals(jTFReSenha.getText())){
+            jLSenhaMsg.setText("Senha e Re-Senha diferentes!");
+        }
+        else{
+            jLabelMsg.setText("");
+            jLEmailMsg.setText("");
+            jLSenhaMsg.setText("");
+>>>>>>> origin/master
             
             Professor prof = new Professor();
             ProfessorDAO pdao = new ProfessorDAO();
@@ -519,7 +696,11 @@ public class FrmCadastroProfessores extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Erro ao Cadastrar");
             }
         }
+<<<<<<< HEAD
     }//GEN-LAST:event_jCadastrarBtnActionPerformed
+=======
+    }//GEN-LAST:event_jCadastrarrBtnActionPerformed
+>>>>>>> origin/master
 
     private void jLimparBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLimparBtnActionPerformed
         jLabelMsg.setText("");
@@ -625,6 +806,7 @@ public class FrmCadastroProfessores extends javax.swing.JFrame {
         jLCPFMsg.setVisible(false);
     }//GEN-LAST:event_jCPFFormattedTextFieldFocusLost
 
+<<<<<<< HEAD
     private void jCadastrarBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCadastrarBtnMouseEntered
         jCadastrarBtn.setIcon(new ImageIcon(getClass().getResource("/Imagens/Buttons/Cadastrar_FocusBtn.png")));
     }//GEN-LAST:event_jCadastrarBtnMouseEntered
@@ -641,6 +823,8 @@ public class FrmCadastroProfessores extends javax.swing.JFrame {
         jLimparBtn.setIcon(new ImageIcon(getClass().getResource("/Imagens/Buttons/LimparBtn.png")));
     }//GEN-LAST:event_jLimparBtnMouseExited
 
+=======
+>>>>>>> origin/master
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -674,10 +858,16 @@ public class FrmCadastroProfessores extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+<<<<<<< HEAD
     private javax.swing.JPanel Fundo;
     private javax.swing.JFormattedTextField jCPFFormattedTextField;
     private javax.swing.JLabel jCPFLabel;
     private javax.swing.JButton jCadastrarBtn;
+=======
+    private javax.swing.JFormattedTextField jCPFFormattedTextField;
+    private javax.swing.JLabel jCPFLabel;
+    private javax.swing.JButton jCadastrarrBtn;
+>>>>>>> origin/master
     private javax.swing.JComboBox<String> jCbArea;
     private javax.swing.JComboBox<String> jCbGraduacao;
     private javax.swing.JLabel jEmailLabel;
@@ -687,8 +877,14 @@ public class FrmCadastroProfessores extends javax.swing.JFrame {
     private javax.swing.JLabel jLEmailMsg;
     private javax.swing.JLabel jLRGMsg;
     private javax.swing.JLabel jLSenhaMsg;
+<<<<<<< HEAD
     private javax.swing.JLabel jLabeDadosLogin;
     private javax.swing.JLabel jLabeDadosPessoais;
+=======
+    private javax.swing.JLabel jLabeDadosPessoais;
+    private javax.swing.JLabel jLabeDadosPessoais1;
+    private javax.swing.JLabel jLabelBG;
+>>>>>>> origin/master
     private javax.swing.JLabel jLabelIconProf;
     private javax.swing.JLabel jLabelMsg;
     private javax.swing.JLabel jLabelTitulo;
@@ -696,7 +892,10 @@ public class FrmCadastroProfessores extends javax.swing.JFrame {
     private javax.swing.JLabel jNomeLabel;
     private javax.swing.JPanel jPanelDadosLogin;
     private javax.swing.JPanel jPanelDadosPessoais;
+<<<<<<< HEAD
     private javax.swing.JPanel jPanelMenu;
+=======
+>>>>>>> origin/master
     private javax.swing.JFormattedTextField jRGFormattedTextField;
     private javax.swing.JLabel jRGLabel;
     private javax.swing.JLabel jReSenhaLabel;
@@ -707,5 +906,11 @@ public class FrmCadastroProfessores extends javax.swing.JFrame {
     private javax.swing.JPasswordField jTFSenha;
     private javax.swing.JTextField jTFUsername;
     private javax.swing.JLabel jUsernameLabel;
+<<<<<<< HEAD
+=======
+    private javax.swing.JLabel space1;
+    private javax.swing.JLabel space2;
+    private javax.swing.JLabel space3;
+>>>>>>> origin/master
     // End of variables declaration//GEN-END:variables
 }

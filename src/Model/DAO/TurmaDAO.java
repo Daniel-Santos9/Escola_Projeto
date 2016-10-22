@@ -118,6 +118,44 @@ public class TurmaDAO {
         
         return turm;
     }
+    
+   public List<Turma> read(int prof_id, String disciplina){
+        
+        String sql;
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        List<Turma> turm = new ArrayList<>();
+        
+        try {
+           
+            sql = "SELECT DISTINCT t.Turma_Serie FROM TURMA t " +
+                    "INNER JOIN RTDP r ON t.turma_id=r.id_turma " +
+                    "INNER JOIN PROFESSOR p ON p.prof_id=r.id_prof " +
+                    "INNER JOIN DISCIPLINA d ON d.disc_id = r.id_disc " +
+                    "WHERE p.Prof_ID = "+prof_id+" "+
+                    "AND t.turma_ano = YEAR(CURDATE())"
+                    + "AND t.Status = 1 AND d.Disc_Nome = '"+disciplina+"';";
+            stmt = con.prepareStatement(sql);          
+            stmt.executeQuery(sql);
+            rs = stmt.executeQuery(sql);
+             
+            while(rs.next()){
+                Turma t = new Turma();
+                t.setSerie(rs.getString(1));
+                turm.add(t);
+            }
+        } 
+        catch (SQLException ex) {
+            Logger.getLogger(ProfessorDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        finally{
+            ConnectionFactory.closeConnection(con, stmt,rs);
+        }
+        
+        return turm;
+    }
+
 
    public List<Turma> read(){
         

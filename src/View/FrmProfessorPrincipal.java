@@ -4,14 +4,21 @@ import Model.DAO.TurmaDAO;
 import Model.bean.Turma;
 import Model.bean.Usuario;
 import java.util.List;
+<<<<<<< HEAD
 import javax.swing.ImageIcon;
+=======
+>>>>>>> origin/master
 import javax.swing.table.DefaultTableModel;
 
 public class FrmProfessorPrincipal extends javax.swing.JFrame {
 
     private Usuario userLogged;
     private List<Turma> listTurma = null;
+<<<<<<< HEAD
     private boolean flag = false;
+=======
+    
+>>>>>>> origin/master
     public FrmProfessorPrincipal(Usuario u) {
         initComponents();
         userLogged = u;
@@ -28,6 +35,7 @@ public class FrmProfessorPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+<<<<<<< HEAD
         Fundo = new javax.swing.JPanel();
         jPanelMenu = new javax.swing.JPanel();
         jLabelLogoEscola = new javax.swing.JLabel();
@@ -57,20 +65,61 @@ public class FrmProfessorPrincipal extends javax.swing.JFrame {
         jLabelLogoEscola.setFont(new java.awt.Font("Open Sans Semibold", 1, 26)); // NOI18N
         jLabelLogoEscola.setForeground(new java.awt.Color(255, 255, 255));
         jLabelLogoEscola.setText("ESCOLA E.E.I.F. PAULO VI");
+=======
+        jPanel2 = new javax.swing.JPanel();
+        jLabelLogoEscola = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jLoginLabel = new javax.swing.JLabel();
+        jLabelIconUser = new javax.swing.JLabel();
+        jLabelLogout = new javax.swing.JLabel();
+        jPanel11 = new javax.swing.JPanel();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        jTableTurmas6 = new javax.swing.JTable();
+        jLabelTurmas = new javax.swing.JLabel();
+        jLabelInformativo = new javax.swing.JLabel();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
+
+        jPanel2.setBackground(new java.awt.Color(56, 160, 224));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabelLogoEscola.setFont(new java.awt.Font("Open Sans Semibold", 0, 18)); // NOI18N
+        jLabelLogoEscola.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelLogoEscola.setText("Escola E.E.I.F. Paulo VI");
+        jPanel2.add(jLabelLogoEscola, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
+
+        jPanel3.setBackground(new java.awt.Color(56, 160, 224));
+        jPanel3.setForeground(new java.awt.Color(56, 160, 224));
+        jPanel3.setToolTipText("");
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+>>>>>>> origin/master
 
         jLoginLabel.setFont(new java.awt.Font("Open Sans Semibold", 0, 14)); // NOI18N
         jLoginLabel.setForeground(new java.awt.Color(255, 255, 255));
         jLoginLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLoginLabel.setText("Expedito Alves");
+<<<<<<< HEAD
 
         jLabelIconUser.setFont(new java.awt.Font("Open Sans Semibold", 0, 14)); // NOI18N
         jLabelIconUser.setForeground(new java.awt.Color(81, 94, 102));
         jLabelIconUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Icons/UserIcon.png"))); // NOI18N
+=======
+        jPanel3.add(jLoginLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 130, -1));
+
+        jLabelIconUser.setFont(new java.awt.Font("Open Sans Semibold", 0, 14)); // NOI18N
+        jLabelIconUser.setForeground(new java.awt.Color(81, 94, 102));
+        jLabelIconUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/userImg.png"))); // NOI18N
+>>>>>>> origin/master
         jLabelIconUser.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabelIconUserMouseClicked(evt);
             }
         });
+<<<<<<< HEAD
+=======
+        jPanel3.add(jLabelIconUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(164, 10, -1, -1));
+>>>>>>> origin/master
 
         jLabelLogout.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelLogout.setForeground(new java.awt.Color(255, 255, 255));
@@ -80,6 +129,7 @@ public class FrmProfessorPrincipal extends javax.swing.JFrame {
                 jLabelLogoutMouseClicked(evt);
             }
         });
+<<<<<<< HEAD
 
         jDisciplinaBtn.setBackground(new java.awt.Color(56, 160, 224));
         jDisciplinaBtn.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -221,11 +271,21 @@ public class FrmProfessorPrincipal extends javax.swing.JFrame {
         jLabeTurmas.setForeground(new java.awt.Color(56, 164, 220));
         jLabeTurmas.setText("TURMAS");
         jLabeTurmas.setPreferredSize(new java.awt.Dimension(116, 34));
+=======
+        jPanel3.add(jLabelLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 42, -1, -1));
+
+        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 0, 220, 60));
+
+        jPanel11.setBackground(new java.awt.Color(255, 255, 255));
+>>>>>>> origin/master
 
         jScrollPane7.setBackground(new java.awt.Color(255, 255, 255));
         jScrollPane7.setBorder(null);
 
+<<<<<<< HEAD
         jTableTurmas6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(56, 160, 224), 1, true));
+=======
+>>>>>>> origin/master
         jTableTurmas6.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         jTableTurmas6.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -254,6 +314,17 @@ public class FrmProfessorPrincipal extends javax.swing.JFrame {
             }
         });
         jScrollPane7.setViewportView(jTableTurmas6);
+<<<<<<< HEAD
+=======
+        jTableTurmas6.getAccessibleContext().setAccessibleDescription("");
+
+        jLabelTurmas.setFont(new java.awt.Font("Open Sans Semibold", 0, 18)); // NOI18N
+        jLabelTurmas.setForeground(new java.awt.Color(56, 160, 224));
+        jLabelTurmas.setText("TURMAS");
+        jLabelTurmas.setMaximumSize(new java.awt.Dimension(65, 26));
+        jLabelTurmas.setMinimumSize(new java.awt.Dimension(65, 26));
+        jLabelTurmas.setPreferredSize(new java.awt.Dimension(65, 26));
+>>>>>>> origin/master
 
         jLabelInformativo.setForeground(new java.awt.Color(56, 160, 224));
         jLabelInformativo.setText("dê dois cliques sobre uma turma para visualizar os alunos matriculados");
@@ -264,6 +335,7 @@ public class FrmProfessorPrincipal extends javax.swing.JFrame {
             }
         });
 
+<<<<<<< HEAD
         javax.swing.GroupLayout jPanelFuncçõesBásicasLayout = new javax.swing.GroupLayout(jPanelFuncçõesBásicas);
         jPanelFuncçõesBásicas.setLayout(jPanelFuncçõesBásicasLayout);
         jPanelFuncçõesBásicasLayout.setHorizontalGroup(
@@ -338,17 +410,50 @@ public class FrmProfessorPrincipal extends javax.swing.JFrame {
                 .addGroup(FundoLayout.createSequentialGroup()
                     .addComponent(jPanelMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 417, Short.MAX_VALUE)))
+=======
+        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
+        jPanel11.setLayout(jPanel11Layout);
+        jPanel11Layout.setHorizontalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabelTurmas, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabelInformativo)
+                    .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 663, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(52, 52, 52))
+        );
+        jPanel11Layout.setVerticalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabelTurmas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelInformativo)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+>>>>>>> origin/master
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+<<<<<<< HEAD
             .addComponent(Fundo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+=======
+            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, 681, javax.swing.GroupLayout.PREFERRED_SIZE)
+>>>>>>> origin/master
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+<<<<<<< HEAD
                 .addComponent(Fundo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
@@ -382,11 +487,26 @@ public class FrmProfessorPrincipal extends javax.swing.JFrame {
             jLabelLogout.setVisible(false);
             flag = false;
         }
+=======
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void jLabelIconUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelIconUserMouseClicked
+        jLabelLogout.setVisible(true);
+>>>>>>> origin/master
     }//GEN-LAST:event_jLabelIconUserMouseClicked
 
     private void jLabelLogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelLogoutMouseClicked
         FrmLogin lg = new FrmLogin();
+<<<<<<< HEAD
         lg.setLocationRelativeTo(null);
+=======
+>>>>>>> origin/master
         lg.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabelLogoutMouseClicked
@@ -395,6 +515,7 @@ public class FrmProfessorPrincipal extends javax.swing.JFrame {
         if (evt.getClickCount() > 1) {
             int selIndex = jTableTurmas6.getSelectedRow();
 
+<<<<<<< HEAD
             FrmTurmaInformativo vt = new FrmTurmaInformativo(listTurma.get(selIndex), userLogged);
             vt.setLocationRelativeTo(null);
             vt.setVisible(true);
@@ -464,6 +585,32 @@ public class FrmProfessorPrincipal extends javax.swing.JFrame {
     private void jTurmaBtnFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTurmaBtnFocusGained
 
     }//GEN-LAST:event_jTurmaBtnFocusGained
+=======
+            VisualizarTurma vt = new VisualizarTurma(listTurma.get(selIndex), userLogged);
+            vt.setVisible(true);
+        }
+    }//GEN-LAST:event_jTableTurmas6jTableTurmasMouseClicked
+    private void loadTurmasTable() {
+        DefaultTableModel model = (DefaultTableModel) jTableTurmas6.getModel();
+        TurmaDAO turmaDAO = new TurmaDAO();
+
+        listTurma = turmaDAO.read(userLogged.getLogin());
+
+        for (Turma t : listTurma) {
+            model.addRow(new Object[]{
+                t.getDisc_nome(),
+                t.getTurno(),
+                t.getSerie(),
+                t.getSala(),
+                t.getAno()
+            });
+        }
+    }
+    
+    private void jLabelInformativojLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelInformativojLabel10MouseClicked
+
+    }//GEN-LAST:event_jLabelInformativojLabel10MouseClicked
+>>>>>>> origin/master
 
     /**
      * @param args the command line arguments
@@ -503,6 +650,7 @@ public class FrmProfessorPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+<<<<<<< HEAD
     private javax.swing.JPanel Fundo;
     private javax.swing.JButton jDisciplinaBtn;
     private javax.swing.JInternalFrame jInternalFrameBemVindo;
@@ -519,5 +667,18 @@ public class FrmProfessorPrincipal extends javax.swing.JFrame {
     private javax.swing.JTable jTableTurmas6;
     private javax.swing.JButton jTurmaBtn;
     private javax.swing.JButton jVisualizarNotasBtn;
+=======
+    private javax.swing.JLabel jLabelIconUser;
+    private javax.swing.JLabel jLabelInformativo;
+    private javax.swing.JLabel jLabelLogoEscola;
+    private javax.swing.JLabel jLabelLogout;
+    private javax.swing.JLabel jLabelTurmas;
+    private javax.swing.JLabel jLoginLabel;
+    private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JTable jTableTurmas6;
+>>>>>>> origin/master
     // End of variables declaration//GEN-END:variables
 }

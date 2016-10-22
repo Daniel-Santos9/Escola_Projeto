@@ -10,7 +10,10 @@
     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
       <Dimension value="[515, 360]"/>
     </Property>
+<<<<<<< HEAD
     <Property name="undecorated" type="boolean" value="true"/>
+=======
+>>>>>>> origin/master
     <Property name="resizable" type="boolean" value="false"/>
     <Property name="size" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
       <Dimension value="[515, 360]"/>
@@ -50,12 +53,17 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+<<<<<<< HEAD
           <AbsoluteConstraints x="160" y="20" width="160" height="40"/>
+=======
+          <AbsoluteConstraints x="180" y="20" width="160" height="40"/>
+>>>>>>> origin/master
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JButton" name="jCancelarBtn">
       <Properties>
+<<<<<<< HEAD
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
@@ -66,13 +74,28 @@
           <Border info="null"/>
         </Property>
         <Property name="borderPainted" type="boolean" value="false"/>
+=======
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/resources/CancelarBtn.png"/>
+        </Property>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+            <LineBorder roundedCorners="true" thickness="2">
+              <Color PropertyName="color" blue="e0" green="a0" red="38" type="rgb"/>
+            </LineBorder>
+          </Border>
+        </Property>
+>>>>>>> origin/master
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[194, 51]"/>
         </Property>
       </Properties>
       <Events>
+<<<<<<< HEAD
         <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jCancelarBtnMouseEntered"/>
         <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jCancelarBtnMouseExited"/>
+=======
+>>>>>>> origin/master
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCancelarBtnActionPerformed"/>
       </Events>
       <Constraints>
@@ -83,26 +106,44 @@
     </Component>
     <Component class="javax.swing.JButton" name="jLEntrarBtn">
       <Properties>
+<<<<<<< HEAD
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
+=======
+>>>>>>> origin/master
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+<<<<<<< HEAD
           <Image iconType="3" name="/Imagens/Buttons/EntrarBtn.png"/>
         </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="null"/>
         </Property>
         <Property name="borderPainted" type="boolean" value="false"/>
+=======
+          <Image iconType="3" name="/resources/EntrarBtn.png"/>
+        </Property>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+            <LineBorder roundedCorners="true" thickness="2">
+              <Color PropertyName="color" blue="e0" green="a0" red="38" type="rgb"/>
+            </LineBorder>
+          </Border>
+        </Property>
+>>>>>>> origin/master
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[194, 51]"/>
         </Property>
       </Properties>
       <Events>
+<<<<<<< HEAD
         <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLEntrarBtnMouseEntered"/>
         <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLEntrarBtnMouseExited"/>
+=======
+>>>>>>> origin/master
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jLEntrarBtnActionPerformed"/>
       </Events>
       <Constraints>
@@ -114,7 +155,11 @@
     <Component class="javax.swing.JLabel" name="jLabelMinimize">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+<<<<<<< HEAD
           <Image iconType="3" name="/Imagens/Buttons/Minimize.png"/>
+=======
+          <Image iconType="3" name="/resources/Minimize.png"/>
+>>>>>>> origin/master
         </Property>
         <Property name="toolTipText" type="java.lang.String" value="Minimizar"/>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -133,7 +178,11 @@
     <Component class="javax.swing.JLabel" name="jLabelClose">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+<<<<<<< HEAD
           <Image iconType="3" name="/Imagens/Buttons/Fechar.png"/>
+=======
+          <Image iconType="3" name="/resources/Fechar.png"/>
+>>>>>>> origin/master
         </Property>
         <Property name="toolTipText" type="java.lang.String" value="Fechar"/>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -253,7 +302,10 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTFUsuarioActionPerformed"/>
+<<<<<<< HEAD
             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTFUsuarioKeyPressed"/>
+=======
+>>>>>>> origin/master
           </Events>
         </Component>
         <Component class="javax.swing.JPasswordField" name="jPasswordField">
@@ -282,7 +334,11 @@
     <Component class="javax.swing.JLabel" name="jLabelLogo">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+<<<<<<< HEAD
           <Image iconType="3" name="/Imagens/Icons/LoginIcon.png"/>
+=======
+          <Image iconType="3" name="/resources/LogoLogin.png"/>
+>>>>>>> origin/master
         </Property>
         <Property name="name" type="java.lang.String" value="" noResource="true"/>
       </Properties>
@@ -317,7 +373,11 @@
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+<<<<<<< HEAD
           <Image iconType="3" name="/Imagens/TelaLogin.png"/>
+=======
+          <Image iconType="3" name="/resources/TelaLogin.png"/>
+>>>>>>> origin/master
         </Property>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[515, 360]"/>

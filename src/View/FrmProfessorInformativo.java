@@ -35,7 +35,10 @@ public class FrmProfessorInformativo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+<<<<<<< HEAD
         Fundo = new javax.swing.JPanel();
+=======
+>>>>>>> origin/master
         jPanel1 = new javax.swing.JPanel();
         jEmailLabel1 = new javax.swing.JLabel();
         jRGLabel = new javax.swing.JLabel();
@@ -55,6 +58,7 @@ public class FrmProfessorInformativo extends javax.swing.JFrame {
         jTFCPF = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableProfessores = new javax.swing.JTable();
+<<<<<<< HEAD
         jPanelMenu = new javax.swing.JPanel();
         jLabelTitulo = new javax.swing.JLabel();
         jLabelIconProf = new javax.swing.JLabel();
@@ -62,6 +66,16 @@ public class FrmProfessorInformativo extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Informações Professores");
+=======
+        jLabelIconProf = new javax.swing.JLabel();
+        jLabelInformativo = new javax.swing.JLabel();
+        jLabelTitulo = new javax.swing.JLabel();
+        jLabelBG = new javax.swing.JLabel();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Informações Professores");
+        setPreferredSize(new java.awt.Dimension(603, 402));
+>>>>>>> origin/master
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
@@ -70,9 +84,12 @@ public class FrmProfessorInformativo extends javax.swing.JFrame {
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+<<<<<<< HEAD
         Fundo.setBackground(new java.awt.Color(255, 255, 255));
         Fundo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(56, 160, 224), 2, true));
 
+=======
+>>>>>>> origin/master
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(56, 160, 224), 1, true));
 
@@ -220,8 +237,13 @@ public class FrmProfessorInformativo extends javax.swing.JFrame {
                             .addComponent(jRGLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+<<<<<<< HEAD
                     .addComponent(jTFRG, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
                     .addComponent(jCbTurmas, 0, 1, Short.MAX_VALUE)
+=======
+                    .addComponent(jTFRG, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                    .addComponent(jCbTurmas, 0, 156, Short.MAX_VALUE)
+>>>>>>> origin/master
                     .addComponent(jTFGraduacao, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
                     .addComponent(jTFUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
                 .addContainerGap())
@@ -229,13 +251,21 @@ public class FrmProfessorInformativo extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+<<<<<<< HEAD
                 .addContainerGap()
+=======
+                .addGap(12, 12, 12)
+>>>>>>> origin/master
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTFUsername, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jUsernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+<<<<<<< HEAD
                         .addGap(102, 102, 102))
+=======
+                        .addGap(196, 196, 196))
+>>>>>>> origin/master
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTFNome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -245,7 +275,11 @@ public class FrmProfessorInformativo extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jTFCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jRGLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+<<<<<<< HEAD
                                 .addComponent(jTFRG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+=======
+                                .addComponent(jTFRG, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+>>>>>>> origin/master
                             .addComponent(jCPFLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -259,10 +293,19 @@ public class FrmProfessorInformativo extends javax.swing.JFrame {
                             .addComponent(jEmailLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jCbDisciplinas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jEmailLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+<<<<<<< HEAD
                             .addComponent(jCbTurmas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(164, 164, 164))
         );
 
+=======
+                            .addComponent(jCbTurmas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(161, 161, 161))))
+        );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 550, 150));
+
+>>>>>>> origin/master
         jScrollPane1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(56, 160, 224), 1, true));
 
         jTableProfessores.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -292,6 +335,7 @@ public class FrmProfessorInformativo extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTableProfessores);
 
+<<<<<<< HEAD
         jPanelMenu.setBackground(new java.awt.Color(56, 160, 224));
 
         jLabelTitulo.setFont(new java.awt.Font("Arial", 1, 26)); // NOI18N
@@ -320,6 +364,12 @@ public class FrmProfessorInformativo extends javax.swing.JFrame {
                     .addComponent(jLabelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
+=======
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 550, 130));
+
+        jLabelIconProf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/IconProf.png"))); // NOI18N
+        getContentPane().add(jLabelIconProf, new org.netbeans.lib.awtextra.AbsoluteConstraints(534, 10, 60, 50));
+>>>>>>> origin/master
 
         jLabelInformativo.setForeground(new java.awt.Color(56, 160, 224));
         jLabelInformativo.setText("dê dois cliques sobre um professor para visualizar sua informação");
@@ -329,6 +379,7 @@ public class FrmProfessorInformativo extends javax.swing.JFrame {
                 jLabelInformativojLabel10MouseClicked(evt);
             }
         });
+<<<<<<< HEAD
 
         javax.swing.GroupLayout FundoLayout = new javax.swing.GroupLayout(Fundo);
         Fundo.setLayout(FundoLayout);
@@ -361,6 +412,19 @@ public class FrmProfessorInformativo extends javax.swing.JFrame {
 
         pack();
         setLocationRelativeTo(null);
+=======
+        getContentPane().add(jLabelInformativo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, -1, -1));
+
+        jLabelTitulo.setFont(new java.awt.Font("Arial", 1, 26)); // NOI18N
+        jLabelTitulo.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelTitulo.setText("INFORMAÇÕES PROFESSORES");
+        getContentPane().add(jLabelTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, -1, 40));
+
+        jLabelBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/InformationProfessores.png"))); // NOI18N
+        getContentPane().add(jLabelBG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        setBounds(0, 0, 622, 444);
+>>>>>>> origin/master
     }// </editor-fold>//GEN-END:initComponents
     private void PreencheDisciplina(Professor p){                       
         listDisciplina = ddao.read(p.getId_user());
@@ -432,10 +496,16 @@ public class FrmProfessorInformativo extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowActivated
     private void loadProfessoresJTable(){
         DefaultTableModel model = (DefaultTableModel) jTableProfessores.getModel();
+<<<<<<< HEAD
         ProfessorDAO profDAO = new ProfessorDAO();
         listProfessor = profDAO.ListarProfessores();
         int cont = 0;
         model.setNumRows(cont);
+=======
+        ProfessorDAO profDAO = new ProfessorDAO();                        
+        listProfessor = profDAO.ListarProfessores();
+        int cont = 0;
+>>>>>>> origin/master
         for(Professor p: listProfessor){
             ++cont;
             model.addRow(new Object[]{
@@ -478,7 +548,10 @@ public class FrmProfessorInformativo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+<<<<<<< HEAD
     private javax.swing.JPanel Fundo;
+=======
+>>>>>>> origin/master
     private javax.swing.JLabel jCPFLabel;
     private javax.swing.JComboBox<String> jCbDisciplinas;
     private javax.swing.JComboBox<String> jCbTurmas;
@@ -486,12 +559,19 @@ public class FrmProfessorInformativo extends javax.swing.JFrame {
     private javax.swing.JLabel jEmailLabel1;
     private javax.swing.JLabel jEmailLabel2;
     private javax.swing.JLabel jGraduaçãoLabel;
+<<<<<<< HEAD
+=======
+    private javax.swing.JLabel jLabelBG;
+>>>>>>> origin/master
     private javax.swing.JLabel jLabelIconProf;
     private javax.swing.JLabel jLabelInformativo;
     private javax.swing.JLabel jLabelTitulo;
     private javax.swing.JLabel jNomeLabel;
     private javax.swing.JPanel jPanel1;
+<<<<<<< HEAD
     private javax.swing.JPanel jPanelMenu;
+=======
+>>>>>>> origin/master
     private javax.swing.JLabel jRGLabel;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTFCPF;

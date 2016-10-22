@@ -3,7 +3,10 @@ package View;
 import Model.DAO.UsuarioDAO;
 import Model.bean.Usuario;
 import java.awt.Cursor;
+<<<<<<< HEAD
 import javax.swing.ImageIcon;
+=======
+>>>>>>> origin/master
 import javax.swing.JOptionPane;
 
 public class FrmLogin extends javax.swing.JFrame {
@@ -38,7 +41,10 @@ public class FrmLogin extends javax.swing.JFrame {
         setTitle("Login no Sistema");
         setBackground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(515, 360));
+<<<<<<< HEAD
         setUndecorated(true);
+=======
+>>>>>>> origin/master
         setResizable(false);
         setSize(new java.awt.Dimension(515, 360));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -46,6 +52,7 @@ public class FrmLogin extends javax.swing.JFrame {
         jLabelTitulo.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
         jLabelTitulo.setForeground(new java.awt.Color(255, 255, 255));
         jLabelTitulo.setText("LOGIN");
+<<<<<<< HEAD
         getContentPane().add(jLabelTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, 160, 40));
 
         jCancelarBtn.setBackground(new java.awt.Color(255, 255, 255));
@@ -61,6 +68,13 @@ public class FrmLogin extends javax.swing.JFrame {
                 jCancelarBtnMouseExited(evt);
             }
         });
+=======
+        getContentPane().add(jLabelTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, 160, 40));
+
+        jCancelarBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/CancelarBtn.png"))); // NOI18N
+        jCancelarBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(56, 160, 224), 2, true));
+        jCancelarBtn.setPreferredSize(new java.awt.Dimension(194, 51));
+>>>>>>> origin/master
         jCancelarBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCancelarBtnActionPerformed(evt);
@@ -68,6 +82,7 @@ public class FrmLogin extends javax.swing.JFrame {
         });
         getContentPane().add(jCancelarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 280, -1, -1));
 
+<<<<<<< HEAD
         jLEntrarBtn.setBackground(new java.awt.Color(255, 255, 255));
         jLEntrarBtn.setForeground(new java.awt.Color(255, 255, 255));
         jLEntrarBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Buttons/EntrarBtn.png"))); // NOI18N
@@ -82,6 +97,12 @@ public class FrmLogin extends javax.swing.JFrame {
                 jLEntrarBtnMouseExited(evt);
             }
         });
+=======
+        jLEntrarBtn.setForeground(new java.awt.Color(255, 255, 255));
+        jLEntrarBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/EntrarBtn.png"))); // NOI18N
+        jLEntrarBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(56, 160, 224), 2, true));
+        jLEntrarBtn.setPreferredSize(new java.awt.Dimension(194, 51));
+>>>>>>> origin/master
         jLEntrarBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jLEntrarBtnActionPerformed(evt);
@@ -89,7 +110,11 @@ public class FrmLogin extends javax.swing.JFrame {
         });
         getContentPane().add(jLEntrarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, -1, -1));
 
+<<<<<<< HEAD
         jLabelMinimize.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Buttons/Minimize.png"))); // NOI18N
+=======
+        jLabelMinimize.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Minimize.png"))); // NOI18N
+>>>>>>> origin/master
         jLabelMinimize.setToolTipText("Minimizar");
         jLabelMinimize.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabelMinimize.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -99,7 +124,11 @@ public class FrmLogin extends javax.swing.JFrame {
         });
         getContentPane().add(jLabelMinimize, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 20, -1, -1));
 
+<<<<<<< HEAD
         jLabelClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Buttons/Fechar.png"))); // NOI18N
+=======
+        jLabelClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Fechar.png"))); // NOI18N
+>>>>>>> origin/master
         jLabelClose.setToolTipText("Fechar");
         jLabelClose.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabelClose.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -130,11 +159,14 @@ public class FrmLogin extends javax.swing.JFrame {
                 jTFUsuarioActionPerformed(evt);
             }
         });
+<<<<<<< HEAD
         jTFUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTFUsuarioKeyPressed(evt);
             }
         });
+=======
+>>>>>>> origin/master
 
         jPasswordField.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jPasswordField.setHorizontalAlignment(javax.swing.JTextField.LEFT);
@@ -183,7 +215,11 @@ public class FrmLogin extends javax.swing.JFrame {
 
         getContentPane().add(jPanelLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 330, 140));
 
+<<<<<<< HEAD
         jLabelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Icons/LoginIcon.png"))); // NOI18N
+=======
+        jLabelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/LogoLogin.png"))); // NOI18N
+>>>>>>> origin/master
         jLabelLogo.setName(""); // NOI18N
         getContentPane().add(jLabelLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 100, 130, 110));
 
@@ -196,7 +232,11 @@ public class FrmLogin extends javax.swing.JFrame {
         getContentPane().add(jLabelMsg, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, 230, -1));
 
         jLabelBG.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+<<<<<<< HEAD
         jLabelBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/TelaLogin.png"))); // NOI18N
+=======
+        jLabelBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/TelaLogin.png"))); // NOI18N
+>>>>>>> origin/master
         jLabelBG.setPreferredSize(new java.awt.Dimension(515, 360));
         jLabelBG.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
@@ -217,6 +257,23 @@ public class FrmLogin extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+<<<<<<< HEAD
+=======
+    private void jLabelBGMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelBGMousePressed
+        mouseX = evt.getX();
+        mouseY = evt.getY();
+        jLabelBG.setCursor(new Cursor(java.awt.Cursor.MOVE_CURSOR));
+    }//GEN-LAST:event_jLabelBGMousePressed
+
+    private void jLabelBGMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelBGMouseDragged
+        this.setLocation(evt.getXOnScreen() - mouseX, evt.getYOnScreen() - mouseY);
+    }//GEN-LAST:event_jLabelBGMouseDragged
+
+    private void jLabelBGMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelBGMouseReleased
+        jLabelBG.setCursor(new Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+    }//GEN-LAST:event_jLabelBGMouseReleased
+
+>>>>>>> origin/master
     private void jLabelCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCloseMouseClicked
         this.dispose();
     }//GEN-LAST:event_jLabelCloseMouseClicked
@@ -240,14 +297,22 @@ public class FrmLogin extends javax.swing.JFrame {
             if(udao.efetuarLogin(usu)){
                 switch (usu.getTipo_user()) {
                     case "1": // Tela administrador
+<<<<<<< HEAD
                         FrmPrincipalFuncionario admin = new FrmPrincipalFuncionario(usu);
+=======
+                        PrincipalWindow admin = new PrincipalWindow(usu);
+>>>>>>> origin/master
                         admin.setVisible(true);
                         admin.setLocationRelativeTo(null);
                         this.dispose();
                         JOptionPane.showMessageDialog(null, "Login feito com Sucesso");
                         break;
                     case "2": // Tela Funcionario
+<<<<<<< HEAD
                         FrmPrincipalFuncionario func = new FrmPrincipalFuncionario(usu);
+=======
+                        PrincipalWindow func = new PrincipalWindow(usu);
+>>>>>>> origin/master
                         func.setLocationRelativeTo(null);
                         func.setVisible(true);
                         this.dispose();
@@ -279,13 +344,18 @@ public class FrmLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_jCancelarBtnActionPerformed
 
     private void jTFUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFUsuarioActionPerformed
+<<<<<<< HEAD
         jLEntrarBtnActionPerformed(evt);
+=======
+        // TODO add your handling code here:
+>>>>>>> origin/master
     }//GEN-LAST:event_jTFUsuarioActionPerformed
 
     private void jPasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordFieldActionPerformed
         jLEntrarBtnActionPerformed(evt);
     }//GEN-LAST:event_jPasswordFieldActionPerformed
 
+<<<<<<< HEAD
     private void jLabelBGMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelBGMouseReleased
         jLabelBG.setCursor(new Cursor(java.awt.Cursor.DEFAULT_CURSOR));
     }//GEN-LAST:event_jLabelBGMouseReleased
@@ -320,6 +390,8 @@ public class FrmLogin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTFUsuarioKeyPressed
 
+=======
+>>>>>>> origin/master
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {

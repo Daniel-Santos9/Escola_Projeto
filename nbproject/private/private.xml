@@ -5,12 +5,17 @@
         <group>
             <file>file:/D:/Escola_Projeto/src/View/FrmProfessorInformativo.java</file>
             <file>file:/D:/Escola_Projeto/src/View/FrmCadastroProfessores.java</file>
+<<<<<<< HEAD
             <file>file:/D:/Escola_Projeto/src/View/FrmCadastroAlunos.java</file>
             <file>file:/D:/Escola_Projeto/src/View/FrmProfessorPrincipal.java</file>
             <file>file:/D:/Escola_Projeto/src/View/FrmLogin.java</file>
             <file>file:/D:/Escola_Projeto/src/View/VisualizarTurma.java</file>
             <file>file:/D:/Escola_Projeto/src/View/Notas.java</file>
             <file>file:/D:/Escola_Projeto/src/View/FrmPrincipalFuncionario.java</file>
+=======
+            <file>file:/D:/Escola_Projeto/src/View/FrmLogin.java</file>
+            <file>file:/D:/Escola_Projeto/src/View/CadastroProfessores.java</file>
+>>>>>>> origin/master
         </group>
     </open-files>
 </project-private>
